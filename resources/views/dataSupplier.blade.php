@@ -18,7 +18,7 @@
 
 <a href="{{ route('create') }}" class="btn btn-primary mb-3 mt-3 text-light justify-content-center"><i class="fa-solid fa-folder-plus mr-3"></i><b>Add Supplier</b></a>
 <div class="conatiner-fluid d-flex justify-content-center shadow-lg rounded-3 p-3">
-    <table id="myTable" class="table-bordered">
+    <table id="myTable" class="table-stripped">
         <thead align="center">
             <tr>
                 <th class="bg-secondary-subtle">Nama Supplier</th>

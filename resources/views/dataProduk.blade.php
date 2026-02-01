@@ -15,7 +15,7 @@
         {{ session('success') }}
     </div>
 @endif
-<a href="{{ route('addProduct') }}" class="btn btn-primary mb-3 mt-3 text-light justify-content-center"><i class="fa-solid fa-folder-plus mr-3"></i><b>Add Product</b></a>
+<a href="{{ route('addProduct') }}" class="btn btn-primary mb-3 mt-3 text-light justify-content-center"><i class="fa-solid fa-folder-plus me-3"></i><b>Add Product</b></a>
 <div class="container-fluid p-3 shadow-lg rounded-3">
     <table id="myTable" class="table table-bordered">
         <thead align="center">
@@ -39,7 +39,7 @@
                 <td>{{$book->isbn}}</td>
                 <td>{{$book->title}}</td>
                 <td>{{$book->author}}</td>
-                <td>{{$book->publish_date}}</td>
+                <td>{{\Carbon\Carbon::parse($book->publish_date)->translatedFormat('d F Y') ?? '-'}}</td>
                 <td>{{$book->supplier->nama_perusahaan}}</td>
                 <td>{{$book->kategori->nama_kategori}}</td>
                 <td>Rp. {{number_format($book->price, 2)}}</td>

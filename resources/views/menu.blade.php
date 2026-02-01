@@ -10,8 +10,7 @@
                 <div class="card-body text-light d-flex align-items-start gap-3 w-100">
                     <i class="fa-solid fa-code-pull-request fa-3x flex-shrink-0 mt-1"></i>
                     <div class="flex-grow-1">
-                        <h3 class="card-title mb-2">Request</h3>
-                        <p class="card-text mb-0">With supporting text below as a natural lead-in.</p>
+                        <h2 class="card-title mb-2">Request</h2>
                     </div>
                 </div>
             </div>     
@@ -25,8 +24,7 @@
                 <div class="card-body text-light d-flex align-items-start gap-3 w-100">
                     <i class="fa-solid fa-bell-concierge fa-3x flex-shrink-0 mt-1"></i>
                     <div class="flex-grow-1">
-                        <h3 class="card-title mb-2">Received</h3>
-                        <p class="card-text mb-0">With supporting text below as a natural lead-in.</p>
+                        <h2 class="card-title mb-2">Received</h2>
                     </div>
                 </div>
             </div>     
@@ -40,8 +38,7 @@
                 <div class="card-body text-light d-flex align-items-start gap-3 w-100">
                     <i class="fa-solid fa-clock-rotate-left fa-3x flex-shrink-0 mt-1"></i>
                     <div class="flex-grow-1">
-                        <h3 class="card-title mb-2">History</h3>
-                        <p class="card-text mb-0">With supporting text below as a natural lead-in.</p>
+                        <h2 class="card-title mb-2">History</h2>
                     </div>
                 </div>
             </div>     

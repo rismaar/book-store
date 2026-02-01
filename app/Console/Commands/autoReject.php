@@ -12,14 +12,14 @@ class autoReject extends Command
      *
      * @var string
      */
-    protected $signature = 'restock:auto-reject';
+    protected $signature = 'auto:reject-restock';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Auto reject restock after 7 days';
 
     /**
      * Execute the console command.
@@ -28,7 +28,7 @@ class autoReject extends Command
     {
         Restock::where('status', 'confirmed')->where('created_at', '<=', now()->subDays(7))->update([
             'status' => 'rejected',
-            'rejected_at' => now()        
+            'rejected_at' => now()      
         ]);
     }
 }

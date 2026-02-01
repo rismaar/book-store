@@ -60,7 +60,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="price" class="col-form-label">Harga</label>
-                    <input type="decimal" class="form-control" id="price" name="price" value="{{ old('price', $books->price) }}">
+                    <input type="decimal" class="form-control" id="price" name="price" value="{{ old('price', $books->selling_price) }}">
                 </div>
                 <div class="mb-3">
                     <label for="stock" class="col-form-label">Stok</label>

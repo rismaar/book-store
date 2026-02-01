@@ -4,7 +4,7 @@
 <h1 class="text-center mb-3">Sejarah</h1>
 <div class="d-flex flex-wrap gap-2 justify-content-center">
     @foreach ($books as $book)
-        <div class="mr-3">
+        <div class="mr-3 book-item" data-title="{{ strtolower($book->title) }}">
             <div class="card" style="width: 17rem;">
                 <img src="{{ asset('storage/cover/' . $book->image) }}" 
                      class="card-img-top" 
@@ -18,6 +18,9 @@
                        data-bs-target="#detailModal{{ $book->isbn }}">See Detail</a>
                 </div>
             </div>
+        </div>
+        <div id="emptyMessage" class="text-center text-muted mt-4 d-none">
+            Product Not Found
         </div>
 
         <div class="modal fade" id="detailModal{{ $book->isbn }}" 

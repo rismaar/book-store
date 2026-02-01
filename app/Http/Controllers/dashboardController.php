@@ -26,5 +26,15 @@ class dashboardController extends Controller
         return view('dashboard', compact('transaksi', 'start', 'end', 'totalProduk', 'recentTransaction', 'kategoriData'));
     }
 
-
+    public function search(Request $request)
+    {
+        $keyword = trim(strtolower($request->q));
+        if(!$keyword){
+            return redirect()->back();
+        }
+        $books = Buku::where(function($q) use($keyword){
+            $q->whereRaw('LOWER(title) LIKE ?', ["%{$keyword}%"])->orWhere('isbn', 'like', '%{$keyword}%');
+        })->get();
+        return view('searchResults', compact('books', 'keyword'));
+    }
 }

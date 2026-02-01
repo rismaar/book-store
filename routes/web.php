@@ -27,6 +27,7 @@ Route::get('/viewFiksi', [bukuController::class, 'viewFiksi'])->name('fiksiFun')
 Route::get('/history', [bukuController::class, 'history'])->name('history');
 Route::get('/misteri', [bukuController::class, 'misteri'])->name('misteri');
 Route::get('/novel', [bukuController::class, 'novel'])->name('novel');
+Route::get('/search', [dashboardController::class, 'search'])->name('search');
 
 
 Route::get('/animate', [bukuController::class, 'animate'])->name('animate');

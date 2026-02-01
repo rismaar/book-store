@@ -15,7 +15,7 @@
         {{ session('success') }}
     </div>
 @endif
-<a href="{{ route('formReq') }}" class="btn btn-primary"><i class="fa-solid fa-folder-plus mr-3"></i><b>Req Restock</b></a>
+<a href="{{ route('formReq') }}" class="btn btn-primary"><i class="fa-solid fa-folder-plus me-2"></i><b>Request</b></a>
 <div class="container-fluid rounded-3 shadow-lg p-3 mt-3">
     <table id="myTable" class="table table-bordered table-sm w-auto mb-0">
         <thead align="center">

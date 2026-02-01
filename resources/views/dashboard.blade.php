@@ -173,9 +173,11 @@
                             <td class="p-3">{{ $t->details->sum('jumlah') }}</td>
                             <td class="p-3">Rp. {{ number_format($t->grand_total, 2) }}</td>
                             <td class="p-3">
-                                <button type="button" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop{{ $t->id_transaksi }}" >
-                                    <i class="fa-solid fa-circle-info"></i>
+                                <button type="button" 
+                                    class="btn btn-link p-0 border-0 shadow-none"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop{{ $t->id_transaksi }}">
+                                    <i class="fa-solid fa-circle-info 2x" style="color: #20365a;"></i>
                                 </button>
                             </td>
                         </tr>
