@@ -15,7 +15,13 @@
         {{ session('success') }}
     </div>
 @endif
-<a href="{{ route('addTrans') }}" class="btn btn-primary"><i class="fa-solid fa-folder-plus mr-3"></i><b>Add Transaction</b></a>
+
+@auth
+    @if (in_array(auth()->user()->role, ['kasir']))
+        <a href="{{ route('addTrans') }}" class="btn btn-primary"><i class="fa-solid fa-folder-plus me-3"></i><b>Add Transaction</b></a>
+    @endif
+@endauth
+
 <form action="{{ route('viewTrans') }}" method="GET" class="mt-3 row g-2">
     <div class="col-md-3">
         <input type="date" name="start_date" class="form-control" value="{{ $start ?? '' }}">
@@ -52,7 +58,7 @@
                             data-bs-target="#staticBackdrop{{ $t->id_transaksi }}" >
                             <i class="fa-solid fa-eye"></i>
                         </button>
-                        <a href="{{ route('invoice', $t->id_transaksi) }}" target="_blank" class="btn btn-primary ml-5"><i class="fa-solid fa-receipt"></i></a> 
+                        <a href="{{ route('invoice', $t->id_transaksi) }}" target="_blank" class="btn btn-primary ms-3"><i class="fa-solid fa-receipt"></i></a> 
                     </td>
                 </tr>
             @endforeach

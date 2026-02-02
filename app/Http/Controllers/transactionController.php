@@ -109,7 +109,7 @@ class transactionController extends Controller
         </style>
 
         <div class="center">
-            <b>Griya Baca</b><br>
+            <b>Salemba Store</b><br>
             Kota Bogor, Jawa Barat<br>
             Telp +21 234 0901
         </div>

@@ -16,10 +16,12 @@ class roleMiddleware
     public function handle(Request $request, Closure $next, $roles): Response
     {
         $user = $request->user();
-        $roleArray = explode(',', $roles);
-
-        if(!in_array($user->role, $roleArray)){
-            return redirect('/dashboard')->with('error', 'Access denied!');
+        if($user){
+            return redirect('/login');
+        }
+        $roles = explode(',', $roles);
+        if(!in_array($user->role, $roles)){
+            abort(403);
         }
         return $next($request);
     }

@@ -17,7 +17,7 @@
 </head>
 <body class="bg-light justify-content-center d-flex align-items-center vh-100">
     <div class="container rounded-5 d-flex flex-column align-items-center w-25 mx-auto p-5 bg-light shadow-lg bg-opacity-25" >
-        <i class="fa-solid fa-user fa-5x" style="color: #1544abff;"></i>
+        <i class="fa-solid fa-user fa-5x" style="color: #3B38A0;"></i>
             <form></form>
             <form action="{{ route('login.process') }}" method="POST" class="mb-5 mt-5 w-100 h-auto">
                 @csrf
@@ -30,7 +30,7 @@
                 <div class="mb-3">
                     <input type="password" class="form-control-lg form-control rounded-4 p-3" id="password" name="password" placeholder="Password" required>
                 </div>
-                <button type="submit" class="btn btn-primary mb-3 mt-3 p-3 w-100"><b>Login</b></button>
+                <button type="submit" class="btn mb-3 mt-3 p-3 w-100 text-white rounded-5" style="background-color: #3B38A0"><b>Login</b></button>
             </form>
     </div>
 </body>

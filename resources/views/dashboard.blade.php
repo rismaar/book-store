@@ -100,9 +100,9 @@
         </div>
     @endguest
 
-
-    @if (auth()->check())
-    <p><b>{{ \Carbon\Carbon::now()->translatedFormat('l, d F Y') }}</b></p>
+@auth
+    @if (auth()->user()->role === 'kasir')
+        <p><b>{{ \Carbon\Carbon::now()->translatedFormat('l, d F Y') }}</b></p>
         <div class="card mt-2" style="border: none; background-color: #3B38A0; font-weight: 700;">
             <div class="card-body d-flex justify-content-between">
                 <figure>
@@ -115,36 +115,6 @@
                 </figure>
                 <div class="d-flex justify-content-end">
                     <img src="{{ asset('img/vect.png') }}" style="height: 200px;">
-                </div>
-            </div>
-        </div>
-        
-        <div class="container-fluid mt-5">
-            <div class="row">
-                <div class="col">
-                    <a href="{{ route('products') }}" class="text-decoration-none">
-                        <div class="card bg-light shadow" style="border: none;">
-                            <div class="card-body d-flex justify-content-center " style="height: 300px;">
-                                <canvas id="produkChart"></canvas>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col d-flex flex-column" style="height: 300px;">
-                    <a class="text-decoration-none flex-fill mb-3" href="{{ route('menu') }}">
-                        <div class="card text-light h-100 p-3" style="background-color: #3B38A0; border: none;">
-                            <div class="card-body d-flex align-items-center">
-                                <h3 class="card-title"><b>Restock</b></h3>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{ route('view.supp') }}" class="text-decoration-none flex-fill">
-                        <div class="card text-white h-100 p-3" style="background-color: #FF7F3E; border: none;">
-                            <div class="card-body d-flex align-items-center">
-                                <h3 class="card-title"><b>Supplier</b></h3>
-                            </div>
-                        </div>
-                    </a>
                 </div>
             </div>
         </div>
@@ -224,6 +194,135 @@
             @endforeach
         </div>
     @endif
+@endauth
+@auth
+    @if (auth()->user()->role === 'admin')
+    <p><b>{{ \Carbon\Carbon::now()->translatedFormat('l, d F Y') }}</b></p>
+        <div class="card mt-2" style="border: none; background-color: #3B38A0; font-weight: 700;">
+            <div class="card-body d-flex justify-content-between">
+                <figure>
+                <blockquote class="blockquote text-white">
+                    <h1>Welcome, {{ auth()->user()->name }} !</h1>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                    Happy Work
+                </figcaption>
+                </figure>
+                <div class="d-flex justify-content-end">
+                    <img src="{{ asset('img/vect.png') }}" style="height: 200px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="col">
+                    <a href="{{ route('products') }}" class="text-decoration-none">
+                        <div class="card bg-light shadow" style="border: none;">
+                            <div class="card-body d-flex justify-content-center " style="height: 300px;">
+                                <canvas id="produkChart"></canvas>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col d-flex flex-column" style="height: 300px;">
+                    <a class="text-decoration-none flex-fill mb-3" href="{{ route('menu') }}">
+                        <div class="card text-light h-100 p-3" style="background-color: #3B38A0; border: none;">
+                            <div class="card-body d-flex align-items-center">
+                                <h3 class="card-title"><b>Restock</b></h3>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="{{ route('view.supp') }}" class="text-decoration-none flex-fill">
+                        <div class="card text-white h-100 p-3" style="background-color: #FF7F3E; border: none;">
+                            <div class="card-body d-flex align-items-center">
+                                <h3 class="card-title"><b>Supplier</b></h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <div class="container-fluid bg-light shadow-lg p-3 mt-5">
+            <p class="text-secondary">Recent Transactions</p>
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th class="bg-warning text-light">No</th>
+                        <th class="bg-warning text-light">ID Transaksi</th>
+                        <th class="bg-warning text-light">Tanggal</th>
+                        <th class="bg-warning text-light">Metode Pembayaran</th>
+                        <th class="bg-warning text-light">Qty</th>
+                        <th class="bg-warning text-light">Total</th>
+                        <th class="bg-warning text-light">Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($recentTransaction as $t)
+                        <tr>
+                            <td class="p-3">{{ $loop->iteration }}</td>
+                            <td class="p-3">{{ $t->id_transaksi }}</td>
+                            <td class="p-3">{{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d F Y') }}</td>
+                            <td class="p-3">{{ $t->metode_pembayaran }}</td>
+                            <td class="p-3">{{ $t->details->sum('jumlah') }}</td>
+                            <td class="p-3">Rp. {{ number_format($t->grand_total, 2) }}</td>
+                            <td class="p-3">
+                                <button type="button" 
+                                    class="btn btn-link p-0 border-0 shadow-none"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop{{ $t->id_transaksi }}">
+                                    <i class="fa-solid fa-circle-info 2x" style="color: #20365a;"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            @foreach ($transaksi as $t)
+                <div class="modal fade" id="staticBackdrop{{ $t->id_transaksi }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ $t->id_transaksi }}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body invoice-content">
+                                <p><strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d F Y') }}</p>
+                                <table class="table table-stripped">
+                                    <thead>
+                                        <tr>
+                                        <th>Produk</th>
+                                        <th>Qty</th>
+                                        <th>Harga</th>
+                                        <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($t->details as $d)
+                                        <tr>
+                                        <td>{{ $d->buku->title ?? $d->nama_produk }}</td>
+                                        <td>{{ $d->jumlah }}</td>
+                                        <td>{{ number_format($d->price,2) }}</td>
+                                        <td>{{ number_format($d->total,2) }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <p><strong>Total:</strong> {{ number_format($t->grand_total,2) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
+@endauth
+    
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const dataKategori = @json($kategoriData);

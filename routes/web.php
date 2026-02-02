@@ -38,7 +38,7 @@ Route::get('/novels', [bukuController::class, 'novels'])->name('novels');
 
 
 
-Route::middleware(['auth', 'role:admin'])->group(function (){
+Route::middleware(['auth'])->group(function (){
     Route::get('/viewProducts', [bukuController::class, 'viewProducts'])->name('products');
     Route::post('/storeBook', [bukuController::class, 'store'])->name('storeBook');
     Route::get('/addProduct', [bukuController::class, 'create'])->name('addProduct');
@@ -46,9 +46,9 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
     Route::put('/update/{isbn}', [bukuController::class, 'update'])->name('update');
     Route::delete('/destroy/{isbn}', [bukuController::class, 'destroy'])->name('destroy');
 
-    Route::get('/addTrans', [transactionController::class, 'addTrans'])->name('addTrans');
-    Route::get('/viewTrans', [transactionController::class, 'viewTrans'])->name('viewTrans');
     Route::get('/invoice/{id}', [transactionController::class, 'invoice'])->name('invoice');
+    Route::get('/viewTrans', [transactionController::class, 'viewTrans'])->name('viewTrans');
+    Route::get('/addTrans', [transactionController::class, 'addTrans'])->name('addTrans');
     Route::post('/storeTrans', [transactionController::class, 'storeTrans'])->name('TransactStore');
  
     Route::get('/create', [supplierController::class, 'create'])->name('create');
@@ -74,3 +74,4 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
         return \App\Models\Buku::where('isbn', $isbn)->select('price')->firstOrFail();
     });
 });
+

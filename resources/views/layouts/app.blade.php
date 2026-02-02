@@ -41,13 +41,13 @@
 
 <div class="container-fluid">
   <div class="row flex-nowrap">
-
-    @if (auth()->check())
+   
+  @auth
       <nav id="sidebar" class="position-fixed d-lg-flex flex-column" 
          style="width: 280px; height: 100vh; z-index: 1035; background-color: #3B38A0;">
-        <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none px-3 py-3">
+        <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none px-2 py-3">
           <i class="bi bi-grid-3x3-gap-fill me-2"></i>
-          <span class="fs-3 fw-semibold text-white fw-bold">Salemba</span>
+          <span class="fs-2 fw-bold" style="font-color: #FF7F11">Salemba Book</span>
         </a>
 
         <hr class="text-white">
@@ -61,8 +61,8 @@
                     Dashboard
                 </a>
             </li>
-
-            <li class="nav-item mb-3">
+            @if (in_array(auth()->user()->role, ['admin']))
+              <li class="nav-item mb-3">
                 <a href="{{ route('index.kat') }}"
                   class="nav-link d-flex align-items-center p-3 text-white fw-bold
                   {{ Request::routeIs('index.kat') ? 'active' : 'text-dark' }}">
@@ -70,8 +70,9 @@
                     Data Kategori
                 </a>
             </li>
-
-            <li class="nav-item">
+            @endif
+            @if (in_array(auth()->user()->role, ['admin','kasir']))
+              <li class="nav-item">
                 <a href="{{ route('viewTrans') }}"
                   class="nav-link d-flex align-items-center p-3 text-white fw-bold
                   {{ Request::routeIs('viewTrans') ? 'active' : 'text-dark' }}">
@@ -79,6 +80,7 @@
                     Data Transaksi
                 </a>
             </li>
+            @endif
         </ul>
 
         <div class="dropup mb-5 ms-3">
@@ -92,7 +94,8 @@
             </ul>
         </div>
       </nav>
-    @endif
+  @endauth
+    
     
 
    @guest
@@ -167,31 +170,6 @@
         btnToggleSidebar.addEventListener('click', () => {
             sidebar.classList.toggle('show');
         });
-
-        // const searchForm   = document.getElementById('searchForm');
-        // const searchInput  = document.getElementById('searchInput');
-        // function filterProducts(keyword) {
-        //     const items = productList.querySelectorAll('.product-item');
-        //     let anyVisible = false;
-
-        //     items.forEach((col) => {
-        //     const text = col.textContent.toLowerCase();
-        //     const match = text.includes(keyword.toLowerCase());
-        //     col.classList.toggle('d-none', !match);
-        //     if (match) anyVisible = true;
-        //     });
-
-        //     emptyMessage.classList.toggle('d-none', anyVisible);
-        // }
-
-        // searchForm.addEventListener('submit', (e) => {
-        //     e.preventDefault();
-        //     filterProducts(searchInput.value.trim());
-        // });
-
-        // searchInput.addEventListener('input', () => {
-        //     filterProducts(searchInput.value.trim());
-        // });
         $('#btnToggleSidebar').click(function() {
             $('#sidebar').toggleClass('show');
         });

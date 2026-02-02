@@ -177,7 +177,7 @@ class restockController extends Controller
             <div class="info" >
                 '.$watermark.'
             
-                <h1>Griya Baca</h1>
+                <h1>Salemba</h1>
                 <h3>Request Invoice</h3>
 
                 <p>
@@ -297,7 +297,7 @@ class restockController extends Controller
             "Total Amount: IDR " . number_format($restock->total, 2) . "\n\n" .
             "Please find the attached invoice for your reference.\n\n" .
             "Best regards,\n" .
-            "Griya Baca Team";
+            "Salemba Team";
         $gmailurl = "https://mail.google.com/mail/?view=cm&fs=1" . "&to=" . urlencode($to) . "&su=" . urlencode($subject) . "&body=" . urlencode($body);
         return redirect()->away($gmailurl);
     }
