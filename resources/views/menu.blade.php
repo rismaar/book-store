@@ -14,7 +14,7 @@
                         <i class="fa-solid fa-code-pull-request fa-3x"></i>
                         <h2 class="text-dark mb-0">Request</h2>
                     </div>
-                    <h1 class="mb-0 fw-bold">{{$restockCount}}</h1>
+                    <span class="badge bg-warning text-dark rounded-pill p-2 fs-3 fw-bold">{{$restockCount}}</span>
                 </div>
             </div>
         </a>
@@ -32,7 +32,7 @@
                         <i class="fa-solid fa-bell-concierge fa-3x"></i>
                         <h2 class="text-dark mb-2">Received</h2>
                     </div>
-                    <h1 class="mb-0 fw-bold">{{$receivedCount}}</h1>
+                    <span class="badge bg-info text-dark rounded-pill p-2 fs-3 fw-bold">{{$receivedCount}}</span>
                 </div>
             </div>     
         </a>
@@ -49,7 +49,7 @@
                         <i class="fa-solid fa-clock-rotate-left fa-3x"></i>
                         <h2 class="text-dark mb-2">History</h2>
                     </div>
-                    <h1 class="mb-0 fw-bold">{{$historyCount}}</h1>
+                    <span class="badge bg-success text-light rounded-pill p-2 fs-3 fw-bold">{{$historyCount}}</span>
                 </div>
             </div>     
         </a>

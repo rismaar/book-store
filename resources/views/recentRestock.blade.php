@@ -77,7 +77,7 @@
 
                             <div class="dropdown">
                                 <button
-                                    class="btn {{ $statusClass }} dropdown-toggle btn-sm"
+                                    class="btn {{ $statusClass }} btn-sm rounded-pill"
                                     type="button"
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false" @if ($res->status === 'accepted' or $res->status === 'rejected') disabled @endif>
@@ -117,7 +117,6 @@
             const id = $(this).data('id_restock');
             const status = $(this).data('status');
             const btn = $(this).closest('.dropdown').find('button');
-
             fetch(`/updateStatus/${id}`, {
                 method: 'POST',
                 headers: {
@@ -128,18 +127,15 @@
             })
             .then(async res => {
                 const data = await res.json();
-
                 if (!res.ok) {
                     console.error('BACKEND ERROR:', data);
                     alert(data.error ?? 'Terjadi kesalahan');
                     return;
                 }
-
                 return data;
             })
             .then(data => {
                 if (!data) return;
-
                 btn.text(data.status.charAt(0).toUpperCase() + data.status.slice(1));
                 btn
                     .removeClass()
@@ -149,7 +145,6 @@
         });
 
     });
-
     function getStatusClass(status) {
         switch (status) {
             case 'confirmed': return 'bg-warning text-light fw-bold';

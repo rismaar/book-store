@@ -307,13 +307,13 @@
                                         <tr>
                                         <td>{{ $d->buku->title ?? $d->nama_produk }}</td>
                                         <td>{{ $d->jumlah }}</td>
-                                        <td>{{ number_format($d->price,2) }}</td>
-                                        <td>{{ number_format($d->total,2) }}</td>
+                                        <td>Rp. {{ number_format($d->price,2) }}</td>
+                                        <td>Rp. {{ number_format($d->total,2) }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <p><strong>Total:</strong> {{ number_format($t->grand_total,2) }}</p>
+                                <p><strong>Total:</strong>Rp. {{ number_format($t->grand_total,2) }}</p>
                             </div>
                         </div>
                     </div>
