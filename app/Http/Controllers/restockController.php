@@ -14,7 +14,10 @@ class restockController extends Controller
 {
     public function menu()
     {
-        return view('menu');
+        $restockCount = Restock::where('status', 'confirmed')->count();
+        $receivedCount = Restock::where('status', 'approved')->count();
+        $historyCount = Restock::where('status', 'accepted')->orWhere('status', 'rejected')->count();
+        return view('menu', compact('restockCount', 'receivedCount', 'historyCount'));
     }
 
     public function formReq()

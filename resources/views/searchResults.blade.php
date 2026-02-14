@@ -6,11 +6,7 @@
         <b>Product Not Found!</b>
     </div>
 @else
-    <h1 class="text-center mb-3">
-        @foreach ($books as $book)
-            {{$book->kategori->nama_kategori}}
-        @endforeach
-    </h1>
+    
     <div class="d-flex flex-wrap gap-2 justify-content-center">
         @foreach ($books as $book)
             <div class="mr-3">

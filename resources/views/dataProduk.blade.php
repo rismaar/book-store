@@ -50,14 +50,14 @@
                 </td>
                 <td>
                     <div class="dropdown">
-                        <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-primary btn-sm" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-pen"></i>
-                        </a>
+                        </button>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('updated', $book->isbn) }}">Update</a></li>
+                            <li><a class="dropdown-item" href="{{ route('updated', $book->isbn) }}"><i class="fa-solid fa-arrows-rotate me-2"></i>Update</a></li>
                             <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $book->isbn }}">
-                                Delete
+                                <i class="fa-regular fa-trash-can me-2"></i>Delete
                                 </button>
                             </li>
                         </ul>

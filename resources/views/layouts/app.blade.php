@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link 
         rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
         <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css" />
-        <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Book Store</title>
+        
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <title>Salemba Book</title>
 <style>
   .nav-link.active{
     background-color: #BDE8F5 !important;
@@ -35,8 +33,15 @@
           transform: translateX(0);
       }
   }
+  .stat-card {
+    border-radius: 20px;
+    overflow: hidden;
+  }
 </style>
 </head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.3.5/js/dataTables.js"></script>
 <body>
 
 <div class="container-fluid">
@@ -44,7 +49,7 @@
    
   @auth
       <nav id="sidebar" class="position-fixed d-lg-flex flex-column" 
-         style="width: 280px; height: 100vh; z-index: 1035; background-color: #3B38A0;">
+         style="width: 280px; height: 100vh; z-index: 1000; background-color: #3B38A0;">
         <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none px-2 py-3">
           <i class="bi bi-grid-3x3-gap-fill me-2"></i>
           <span class="fs-2 fw-bold" style="font-color: #FF7F11">Salemba Book</span>
@@ -83,14 +88,27 @@
             @endif
         </ul>
 
-        <div class="dropup mb-5 ms-3">
-            <i class="fa-solid fa-user fa-2x href="#" style="color: #ffffff" role="button" data-bs-toggle="dropdown" aria-expanded="false""></i>
-            <ul class="dropdown-menu dropdown-menu-lg-end">
-              <form action="{{ route('logout') }}" method="post">
-                @csrf
-                  <li class="dropdown-item"><b>{{ auth()->user()->name }}</b></li>
-                  <li><button class="btn btn-light dropdown-item" type="submit"><i class="fa-solid fa-right-from-bracket"></i>Logout</button></li>
-              </form>
+        <div class="dropdown dropup mb-5 ms-3">
+            <button class="btn p-0 border-0 bg-transparent text-white"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                <i class="fa-solid fa-user fa-2x"></i>
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li class="dropdown-item">
+                    <b>{{ auth()->user()->name }}</b>
+                </li>
+
+                <li>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button class="dropdown-item" type="submit">
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
+                        </button>
+                    </form>
+                </li>
             </ul>
         </div>
       </nav>
@@ -107,7 +125,7 @@
               <i class="bi bi-list"></i>
             </button>
             @guest
-              <span class="fw-semibold">Salemba</span>
+              <span class="fw-semibold">Salemba Book</span>
             @endguest
           </div>
           <form class="d-none d-md-flex ms-3 flex-grow-1" role="search" action="{{ route('search') }}" method="GET">
@@ -167,12 +185,11 @@
         const btnToggleSidebar = document.getElementById('btnToggleSidebar');
         const sidebar = document.getElementById('sidebar');
 
-        btnToggleSidebar.addEventListener('click', () => {
+        if(btnToggleSidebar && sidebar){
+          btnToggleSidebar.addEventListener('click', () => {
             sidebar.classList.toggle('show');
-        });
-        $('#btnToggleSidebar').click(function() {
-            $('#sidebar').toggleClass('show');
-        });
+          });
+        }
    </script>
   @stack('scripts')
 </body>
