@@ -19,7 +19,7 @@ class supplierController extends Controller
         return view('dataSupplier', compact('supplier'));
     }
 
-    public function store(Request $request)
+    public function stores(Request $request)
     {
         $request->validate([
             'nama_perusahaan' => 'required|string',

@@ -50,11 +50,12 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/viewTrans', [transactionController::class, 'viewTrans'])->name('viewTrans');
     Route::get('/addTrans', [transactionController::class, 'addTrans'])->name('addTrans');
     Route::post('/storeTrans', [transactionController::class, 'storeTrans'])->name('TransactStore');
+    Route::get('/report', [transactionController::class, 'report'])->name('report');
  
     Route::get('/create', [supplierController::class, 'create'])->name('create');
     Route::get('/viewSup', [supplierController::class, 'viewSup'])->name('view.supp');
-    Route::post('/stores', [supplierController::class, 'stores'])->name('storeSupp');
     Route::post('/update/{siup}', [supplierController::class, 'update'])->name('update.supp');
+    Route::post('/stores', [supplierController::class, 'stores'])->name('storeSupp');
 
     Route::get('/index', [kategoriController::class, 'index'])->name('index.kat');
     Route::post('/addKategori', [kategoriController::class, 'addKategori'])->name('addKategori');

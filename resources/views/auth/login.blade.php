@@ -12,7 +12,7 @@
         />
 
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <title>Login</title>
 </head>
 <body class="bg-light justify-content-center d-flex align-items-center vh-100">
@@ -21,11 +21,11 @@
             <form></form>
             <form action="{{ route('login.process') }}" method="POST" class="mb-5 mt-5 w-100 h-auto">
                 @csrf
+                @error('username')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
                 <div class="mb-3">
                     <input type="text" class="form-control-lg form-control rounded-4 p-3" id="username" name="username" placeholder="username" required>
-                    @error('username')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
                 </div>
                 <div class="mb-3">
                     <input type="password" class="form-control-lg form-control rounded-4 p-3" id="password" name="password" placeholder="Password" required>

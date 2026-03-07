@@ -11,11 +11,11 @@
     </div>
 @endif
 @if (session('success'))
-    <div class="alert alert-success">
+    <div class="alert alert-success"><i class="fa-solid fa-circle-check me-2"></i>
         {{ session('success') }}
     </div>
 @endif
-<a href="{{ route('addProduct') }}" class="btn btn-primary mb-3 mt-3 text-light justify-content-center"><i class="fa-solid fa-folder-plus me-3"></i><b>Add Product</b></a>
+<a href="{{ route('addProduct') }}" class="btn mb-3 mt-3 text-light justify-content-center" style="background-color: #3B38A0"><i class="fa-solid fa-folder-plus me-2"></i><b>Add Product</b></a>
 <div class="container-fluid p-3 shadow-lg rounded-3">
     <table id="myTable" class="table table-bordered">
         <thead align="center">
@@ -50,8 +50,8 @@
                 </td>
                 <td>
                     <div class="dropdown">
-                        <button class="btn btn-primary btn-sm" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-pen"></i>
+                        <button class="btn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-pen" style="color:#3B38A0"></i>
                         </button>
 
                         <ul class="dropdown-menu">

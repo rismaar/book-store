@@ -11,7 +11,7 @@
     </div>
 @endif
 @if (session('success'))
-    <div class="alert alert-success">
+    <div class="alert alert-success"><i class="fa-solid fa-circle-check me-2"></i>
         {{ session('success') }}
     </div>
 @endif
@@ -27,7 +27,7 @@
 </style>
 
 
-<a id="addItem" type="button" class="btn btn-primary"><i class="fa-solid fa-folder-plus me-2"></i><b>Add Category</b></a>
+<a id="addItem" type="button" class="btn text-white" style="background-color: #3B38A0"><i class="fa-solid fa-folder-plus me-2"></i><b>Add Category</b></a>
 <div class="conatiner-fluid d-flex justify-content-center shadow-lg rounded-3 p-3 mt-3">
     <table id="table" class="table table-stripped">
         <thead align="center">
@@ -54,7 +54,7 @@
             <label for="nama_kategori" class="col-form-label">Kategori</label>
             <input type="text" id="nama_kategori" name="nama_kategori" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary"><b>Simpan</b></button>
+        <button type="submit" class="btn text-white" style="background-color: #3B38A0"><b>Simpan</b></button>
     </form>
 </div>
 

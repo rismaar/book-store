@@ -13,31 +13,40 @@
         
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <title>Salemba Book</title>
-<style>
-  .nav-link.active{
-    background-color: #BDE8F5 !important;
-    color: #0F2854 !important;
-    font-weight: 700;
-  }
-  @media (min-width: 992px) {
-      .sidebar-offset {
-          margin-left: 280px !important;
-      }
-  }
-  @media (max-width: 991px) {
-      #sidebar {
-          transform: translateX(-100%);
-          transition: transform 0.3s ease;
-      }
-      #sidebar.show {
-          transform: translateX(0);
-      }
-  }
-  .stat-card {
-    border-radius: 20px;
-    overflow: hidden;
-  }
-</style>
+  <style>
+    .nav-link.active{
+      background-color: #BDE8F5 !important;
+      color: #0F2854 !important;
+      font-weight: 700;
+    }
+    @media (min-width: 992px) {
+        .sidebar-offset {
+            margin-left: 280px !important;
+        }
+    }
+    @media (max-width: 991px) {
+        #sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        #sidebar.show {
+            transform: translateX(0);
+        }
+    }
+    .stat-card {
+      border-radius: 20px;
+      overflow: hidden; 
+    }
+    .btn-login {
+      background-color:  #ffffff38 !important;
+      color: #fff;
+      font-weight: 700;
+    }
+    .btn-login:hover {
+      background-color: #3B38A0 !important;
+      color: #fff;
+    }
+  </style>
 </head>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -71,9 +80,7 @@
                 <a href="{{ route('index.kat') }}"
                   class="nav-link d-flex align-items-center p-3 text-white fw-bold
                   {{ Request::routeIs('index.kat') ? 'active' : 'text-dark' }}">
-                    <i class="fa-solid fa-book fa-lg me-3"></i>
-                    Data Kategori
-                </a>
+                    <i class="fa-solid fa-book fa-lg me-3"></i>Product Category</a>
             </li>
             @endif
             @if (in_array(auth()->user()->role, ['admin','kasir']))
@@ -81,9 +88,7 @@
                 <a href="{{ route('viewTrans') }}"
                   class="nav-link d-flex align-items-center p-3 text-white fw-bold
                   {{ Request::routeIs('viewTrans') ? 'active' : 'text-dark' }}">
-                    <i class="fa-solid fa-server fa-lg me-3"></i>
-                    Data Transaksi
-                </a>
+                    <i class="fa-solid fa-server fa-lg me-3"></i>Data Transaction</a>
             </li>
             @endif
         </ul>
@@ -118,23 +123,21 @@
 
    @guest
      <div class="col px-0">
-      <nav class="navbar navbar-expand-lg bg-body border-bottom sticky-top shadow-sm">
+      <nav class="navbar navbar-expand-lg border-bottom sticky-top p-4" style="background-color: #3B38A0;">
         <div class="container-fluid">
           <div class="d-flex align-items-center">
             <button class="btn btn-light d-lg-none me-2" id="btnToggleSidebar">
               <i class="bi bi-list"></i>
             </button>
             @guest
-              <span class="fw-semibold">Salemba Book</span>
+              <span class="fw-semibold text-white">Salemba Book</span>
             @endguest
           </div>
           <form class="d-none d-md-flex ms-3 flex-grow-1" role="search" action="{{ route('search') }}" method="GET">
             <div class="input-group">
-              <span class="input-group-text bg-white border-end-0">
-                <i class="bi bi-search text-secondary"></i>
-              </span>
+              
               <input
-                class="form-control border-start-0"
+                class="form-control border-start-0 p-3" style="border: none;"
                 type="search"
                 placeholder="Search your product here.."
                 aria-label="Search"
@@ -145,7 +148,7 @@
 
           <div class="d-flex align-items-center gap-2 ms-3">
             @guest
-              <a href="{{ route('login') }}" class="btn btn-dark d-flex align-items-center justify-content-center">
+              <a href="{{ route('login') }}" class="btn btn-login d-flex align-items-center justify-content-center">
                 Login
               </a>
             @endguest
@@ -156,7 +159,7 @@
       <div class="container-fluid p-3 w-100">
         @guest
             @if (session('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success"><i class="fa-solid fa-circle-check me-2"></i>
                     {{ session('success') }}
                 </div>
             @endif

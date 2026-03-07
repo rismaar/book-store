@@ -11,23 +11,45 @@
     </div>
 @endif
 @if (session('success'))
-    <div class="alert alert-success">
+    <div class="alert alert-success"><i class="fa-solid fa-circle-check me-2"></i>
         {{ session('success') }}
     </div>
 @endif
-<h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" class="fw-bold">History Restock</h1>
+
+<h5 class="title mb-3">Recent Restock Requests</h5>
+<div class="container-fluid mb-3">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-0 bg-primary-subtle">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h5 class="card-title fw-bold text-primary">{{ $acceptedCount }} </h5>
+                    <h5 class="card-title fw-bold text-primary"><i class="fa-solid fa-circle-check me-2"></i>Accepted</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-0 bg-danger-subtle">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h5 class="card-title fw-bold text-danger">{{ $rejectedCount }} </h5>
+                    <h5 class="card-title fw-bold text-danger"><i class="fa-solid fa-circle-xmark me-2"></i>Rejected</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid rounded-3 shadow-lg p-3 mt-3">
     <table id="myTable" class="table table-bordered table-sm w-auto mb-0">
         <thead align="center">
             <tr>
-                <th class="bg-secondary-subtle">Id Restock</th>
-                <th class="bg-secondary-subtle">Tanggal Request</th>
-                <th class="bg-secondary-subtle">Tanggal Diterima</th>
-                <th class="bg-secondary-subtle">Tanggal Ditolak</th>
+                <th class="bg-secondary-subtle">Restock ID</th>
+                <th class="bg-secondary-subtle">Request Date</th>
+                <th class="bg-secondary-subtle">Accepted Date</th>
+                <th class="bg-secondary-subtle">Rejected Date</th>
                 <th class="bg-secondary-subtle">Supplier</th>
-                <th class="bg-secondary-subtle">Produk</th>
+                <th class="bg-secondary-subtle">Product</th>
                 <th class="bg-secondary-subtle">Total</th>
-                <th class="bg-secondary-subtle" style="width: 1%; white-space: nowrap;">Menu</th>
+                <th class="bg-secondary-subtle" style="width: 1%; white-space: nowrap;">Status</th>
             </tr>
         </thead>
         <tbody class="justify-content-center">
@@ -44,7 +66,7 @@
                             
                                 <thead>
                                     <tr class="text-muted">
-                                        <th>Nama Barang</th>
+                                        <th>Product Name</th>
                                         <th>Qty</th>
                                     </tr>
                                 </thead>
@@ -77,7 +99,7 @@
 
                             <div class="dropdown">
                                 <button
-                                    class="btn {{ $statusClass }} btn-sm rounded-pill"
+                                    class="btn {{ $statusClass }} btn-sm rounded-4 p-2"
                                     type="button"
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false" @if ($res->status === 'accepted' or $res->status === 'rejected') disabled @endif>
@@ -100,7 +122,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            <a href="{{ route('invoiceReq', $res->id_restock) }}"class="btn btn-primary btn-sm fw-bold"><i class="fa-solid fa-file-lines"></i></a>
+                            <a href="{{ route('invoiceReq', $res->id_restock) }}"class="btn"><i class="fa-solid fa-file-lines fa-xl"  style="color: #3B38A0;"></i></a>
                         </div>
                     </td>
                 </tr>

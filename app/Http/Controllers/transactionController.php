@@ -75,7 +75,7 @@ class transactionController extends Controller
                 'grand_total' => $grandTotal
             ]);
         });
-        return redirect()->route('viewTrans')->with('success', 'Transaksi berhasil');
+        return redirect()->route('viewTrans')->with('success', 'Transaction successfully');
     }
 
     public function invoice($id)
@@ -159,5 +159,14 @@ class transactionController extends Controller
         $pdf = Pdf::loadHTML($html)->setPaper([0, 0, 226.77, $paperHeight], 'portrait'); 
 
         return $pdf->stream('struk_'.$transaksi->id_transaksi.'.pdf');
+    }
+
+    public function report(Request $request) 
+    {
+        $start = $request->start_date;
+        $end = $request->end_date;
+        $transact = Transaksi::whereBetween('created_at', [$start.' 00:00:00', $end.' 23:59:59'])->get();
+        $total = $transact->sum('grand_total');
+        return view('report', compact('start', 'end', 'transact', 'total'));
     }
 }

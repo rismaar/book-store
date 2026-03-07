@@ -25,7 +25,7 @@ class loginController extends Controller
             return redirect()->route('dashboard')->with('success', 'Welcome ' . Auth::user()->name);
         }
         throw ValidationException::withMessages([
-            'username' => 'The provided credentials do not match our records.',
+            'username' => 'The provided credentials do not match our records',
         ]);
     }
 
@@ -34,7 +34,7 @@ class loginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/home')->with('success', 'You have been logged out.');
+        return redirect('/home')->with('success', 'You have been logged out successfully');
     }
 }
 

@@ -11,24 +11,25 @@
     </div>
 @endif
 @if (session('success'))
-    <div class="alert alert-success">
+    <div class="alert alert-success"><i class="fa-solid fa-circle-check me-2"></i>
         {{ session('success') }}
     </div>
 @endif
-<a href="{{ route('formReq') }}" class="btn btn-primary"><i class="fa-solid fa-folder-plus me-2"></i><b>Request</b></a>
+<a href="{{ route('formReq') }}" class="btn text-white" style="background-color: #3B38A0"><i class="fa-solid fa-folder-plus me-2"></i><b>Request</b></a>
 <div class="container-fluid rounded-3 shadow-lg p-3 mt-3">
-    <table id="myTable" class="table table-bordered table-sm w-auto mb-0">
+    <table id="myTable" class="table table-bordered mb-0">
         <thead align="center">
             <tr>
                 <th class="bg-secondary-subtle">Id Restock</th>
                 <th class="bg-secondary-subtle">Tanggal Request</th>
                 <th class="bg-secondary-subtle">Supplier</th>
-                <th class="bg-secondary-subtle">Produk</th>
+                <th class="bg-secondary-subtle">Product</th>
                 <th class="bg-secondary-subtle">Total</th>
-                <th class="bg-secondary-subtle" style="width: 1%; white-space: nowrap;">Menu</th>
+                <th class="bg-secondary-subtle">Status</th>
+                <th class="bg-secondary-subtle">Menu</th>
             </tr>
         </thead>
-        <tbody class="justify-content-center">
+        <tbody>
             @foreach ($restock as $res)
                 <tr>
                     <td>{{ $res->id_restock }}</td>
@@ -54,51 +55,53 @@
                             </table>
                         </div>
                     </td>
-                    <td>Rp. {{ number_format($res->total, 2) }} @if ($res->status === 'confirmed' or $res->status === 'approved')
-                        <b class="text-danger">(UN-PAID)</b>
-                    @endif</td>
-                    <td class="text-end" >
-                        <div class="d-inline-flex justify-content-end align-items-center gap-2" style="white-space: nowrap;">
-                            @php
-                                $statusClass = match($res->status) {
-                                    'confirmed' => 'bg-warning text-light fw-bold',
-                                    'approved'  => 'bg-success text-light fw-bold',
-                                    'accepted'  => 'bg-info text-light fw-bold',
-                                    'rejected'  => 'bg-danger text-light fw-bold',
-                                    default     => 'bg-secondary text-light fw-bold'
-                                };
-                            @endphp
+                    <td>Rp. {{ number_format($res->total, 2) }} 
+                        @if ($res->status === 'confirmed' or $res->status === 'approved')
+                            <b class="text-danger">(UN-PAID)</b>
+                        @endif
+                    </td>
+                    <td>
+                        @php
+                            $statusClass = match($res->status) {
+                                'confirmed' => 'bg-warning text-light fw-bold',
+                                'approved'  => 'bg-success text-light fw-bold',
+                                'accepted'  => 'bg-info text-light fw-bold',
+                                'rejected'  => 'bg-danger text-light fw-bold',
+                                default     => 'bg-secondary text-light fw-bold'
+                            };
+                        @endphp
 
-                            <div class="dropdown">
-                                <button
-                                    class="btn {{ $statusClass }} dropdown-toggle btn-sm"
-                                    type="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    {{ ucfirst($res->status) }}
-                                </button>
+                        <div class="dropdown">
+                            <button
+                                class="btn {{ $statusClass }} dropdown-toggle btn-sm"
+                                type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                {{ ucfirst($res->status) }}
+                            </button>
 
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li class="dropdown-header">Change Status</li>
-                                    <li><hr class="dropdown-divider"></li>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li class="dropdown-header">Change Status</li>
+                                <li><hr class="dropdown-divider"></li>
 
-                                    @foreach (['confirmed','approved','accepted','rejected'] as $status)
-                                        <li>
-                                            @if(!($status === 'accepted' && $res->status !== 'approved'))
-                                                <a href="#"
-                                                class="dropdown-item status-item"
-                                                data-id_restock="{{ $res->id_restock }}"
-                                                data-status="{{ $status }}">
-                                                    {{ ucfirst($status) }}
-                                                </a>
-                                            @endif
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <a href="{{ route('invoiceReq', $res->id_restock) }}"class="btn btn-primary btn-sm fw-bold"><i class="fa-solid fa-file-lines"></i></a>
-                            <a href="{{ route('restock.email', $res->id_restock) }}" target="_blank" class="btn btn-primary btn-sm fw-bold"><i class="fa-solid fa-paper-plane"></i></a>
+                                @foreach (['confirmed','approved','accepted','rejected'] as $status)
+                                    <li>
+                                        @if(!($status === 'accepted' && $res->status !== 'approved'))
+                                            <a href="#"
+                                            class="dropdown-item status-item"
+                                            data-id_restock="{{ $res->id_restock }}"
+                                            data-status="{{ $status }}">
+                                                {{ ucfirst($status) }}
+                                            </a>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
                         </div>
+                    </td>
+                    <td>
+                        <a href="{{ route('invoiceReq', $res->id_restock) }}"class="btn "><i class="fa-solid fa-file-lines fa-xl"  style="color: #3B38A0;"></i></a>
+                        <a href="{{ route('restock.email', $res->id_restock) }}" target="_blank" class="btn" ><i class="fa-solid fa-paper-plane fa-xl"  style="color: #3B38A0"></i></a>
                     </td>
                 </tr>
             @endforeach

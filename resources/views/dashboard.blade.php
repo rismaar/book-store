@@ -110,7 +110,7 @@
                     <h1>Welcome, {{ auth()->user()->name }} !</h1>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                    Happy Work
+                    {{ auth()->user()->role }}
                 </figcaption>
                 </figure>
                 <div class="d-flex justify-content-end">
@@ -205,7 +205,7 @@
                     <h1>Welcome, {{ auth()->user()->name }} !</h1>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                    Happy Work
+                    {{ auth()->user()->role }}
                 </figcaption>
                 </figure>
                 <div class="d-flex justify-content-end">
@@ -329,8 +329,8 @@
     const labels = dataKategori.map(item => item.kategori);
     const data = dataKategori.map(item => item.total);
     const colors = [
-        '#FFEF5F', '#FF7F3E', '#85409D', '#DC0E0E',
-        '#2196F3', '#9C27B0', '#00BCD4'
+        '#FF7F3E', '#DC0E0E',
+        '#2196F3', '#9C27B0', '#00BCD4', '#E4FF30'
     ];
 
     const centerText = {
@@ -344,7 +344,7 @@
             ctx.font = 'bold 28px Arial';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillStyle = '#4988C4';
+            ctx.fillStyle = '#FF0000';
 
             ctx.fillText(
                 {{ $totalProduk }},

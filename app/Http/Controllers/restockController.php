@@ -17,12 +17,12 @@ class restockController extends Controller
         $restockCount = Restock::where('status', 'confirmed')->count();
         $receivedCount = Restock::where('status', 'approved')->count();
         $historyCount = Restock::where('status', 'accepted')->orWhere('status', 'rejected')->count();
-        return view('menu', compact('restockCount', 'receivedCount', 'historyCount'));
+        return view('menu', compact('restockCount', 'receivedCount',  'historyCount'));
     }
 
     public function formReq()
     {
-        $suppliers = Supplier::where('status', 'Aktif')->get();
+        $suppliers = Supplier::where('status', 'Active')->get();
         $books = Buku::all();
         return view('addRequest', compact('suppliers', 'books'));
     }
@@ -283,7 +283,9 @@ class restockController extends Controller
     public function recent()
     {
         $restock = Restock::where('status', 'accepted')->orWhere('status', 'rejected')->get();
-        return view('recentRestock', compact('restock'));
+        $acceptedCount = Restock::where('status', 'accepted')->count();
+        $rejectedCount = Restock::where('status', 'rejected')->count();
+        return view('recentRestock', compact('restock', 'acceptedCount', 'rejectedCount'));
     }
 
     public function sendGmail($id)
