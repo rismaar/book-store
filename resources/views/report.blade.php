@@ -65,12 +65,9 @@
         <tbody>
             @php $no = 1; @endphp
             @forelse($transact as $t)
-
                 @php $rowCount = $t->details->count(); @endphp
-
                 @foreach($t->details as $detail)
                     <tr>
-
                         @if($loop->first)
                             <td rowspan="{{ $rowCount }}">{{ $no++ }}</td>
                             <td rowspan="{{ $rowCount }}">
@@ -78,11 +75,9 @@
                             </td>
                             <td rowspan="{{ $rowCount }}">{{ $t->id_transaksi ?? '-' }}</td>
                         @endif
-
                         <td>{{ $detail->buku->title ?? '-' }}</td>
                         <td>{{ $detail->jumlah }}</td>
                         <td>IDR {{ number_format($detail->total,0,',','.') }}</td>
-
                     </tr>
                 @endforeach
 
@@ -97,14 +92,11 @@
     <div class="total">
         Total Amount: IDR {{ number_format($total,0,',','.') }}
     </div>
-
     <br><br>
-
     <div style="text-align:right;">
         <p>Admin,</p>
         <br><br>
         <p>______________________</p>
     </div>
-
 </body>
 </html>

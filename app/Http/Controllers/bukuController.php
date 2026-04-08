@@ -87,7 +87,6 @@ class bukuController extends Controller
             'price'         => 'required|numeric',
             'pages'         => 'required|integer',
             'categories'    => 'required|exists:kategori,id_kategori',
-            'stock'         => 'required|integer',
             'description'   => 'nullable|string',
             'image'         => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
@@ -100,7 +99,6 @@ class bukuController extends Controller
         $books->price = $request->price;
         $books->pages = $request->pages;
         $books->categories = $request->categories;
-        $books->stock = $request->stock;
         $books->description = $request->description;
 
         if($request->hasFile('image')){
@@ -167,6 +165,6 @@ class bukuController extends Controller
 
     public function novel()
     {
-        return view('novels');
+        return view('novel');
     }
 }

@@ -21,14 +21,14 @@
         <thead align="center">
             <tr>
                 <th class="bg-secondary-subtle">ISBN</th>
-                <th class="bg-secondary-subtle">Judul Buku</th>
-                <th class="bg-secondary-subtle">Penulis</th>
-                <th class="bg-secondary-subtle">Tanggal Rilis</th>
-                <th class="bg-secondary-subtle">Penerbit</th>
-                <th class="bg-secondary-subtle">Kategori</th>
-                <th class="bg-secondary-subtle">Harga Beli</th>
-                <th class="bg-secondary-subtle">Harga Jual</th>
-                <th class="bg-secondary-subtle">Stok</th>
+                <th class="bg-secondary-subtle">Title</th>
+                <th class="bg-secondary-subtle">Author</th>
+                <th class="bg-secondary-subtle">Release Date</th>
+                <th class="bg-secondary-subtle">Publisher</th>
+                <th class="bg-secondary-subtle">Category</th>
+                <th class="bg-secondary-subtle">Purchase Price</th>
+                <th class="bg-secondary-subtle">Selling Price</th>
+                <th class="bg-secondary-subtle">Stock</th>
                 <th class="bg-secondary-subtle">Cover</th>
                 <th class="bg-secondary-subtle"></th>
             </tr>

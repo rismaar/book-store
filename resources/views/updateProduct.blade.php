@@ -63,10 +63,6 @@
                 <input type="decimal" class="form-control p-3" id="price" name="price" value="{{ old('price', $books->selling_price) }}">
             </div>
             <div class="col-md-6 mb-3">
-                <label for="stock" class="col-form-label"><b>Stock</b></label>
-                <input type="number" class="form-control p-3" id="stock" name="stock" value="{{ old('stock', $books->stock) }}">
-            </div>
-            <div class="col-md-6 mb-3">
                 <label for="description" class="col-form-label"><b>Description</b></label>
                 <textarea class="form-control p-3" id="description" name="description">{{ old('description', $books->description) }}</textarea>
             </div>

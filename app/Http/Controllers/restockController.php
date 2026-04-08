@@ -17,7 +17,9 @@ class restockController extends Controller
         $restockCount = Restock::where('status', 'confirmed')->count();
         $receivedCount = Restock::where('status', 'approved')->count();
         $historyCount = Restock::where('status', 'accepted')->orWhere('status', 'rejected')->count();
-        return view('menu', compact('restockCount', 'receivedCount',  'historyCount'));
+        $availableYears = DB::select('SELECT DISTINCT YEAR(restock_date) as year FROM restock ORDER BY year DESC');
+        $availableYears = collect($availableYears)->pluck('year');
+        return view('menu', compact('restockCount', 'receivedCount',  'historyCount', 'availableYears'));
     }
 
     public function formReq()
@@ -280,12 +282,14 @@ class restockController extends Controller
         return response()->json(['status' => $request->status]);
     }
 
-    public function recent()
+    public function recent(Request $request)
     {
-        $restock = Restock::where('status', 'accepted')->orWhere('status', 'rejected')->get();
-        $acceptedCount = Restock::where('status', 'accepted')->count();
-        $rejectedCount = Restock::where('status', 'rejected')->count();
-        return view('recentRestock', compact('restock', 'acceptedCount', 'rejectedCount'));
+        $selectedYear = $request->get('year', date('Y'));
+        $base = Restock::filterByYear($selectedYear)->whereIn('status', ['accepted', 'rejected']);
+        $acceptedCount = (clone $base)->where('status', 'accepted')->count();
+        $rejectedCount = (clone $base)->where('status', 'rejected')->count();
+        $restocks = (clone $base)->orderBy('restock_date', 'desc')->get();
+        return view('recentRestock', compact('acceptedCount', 'rejectedCount', 'selectedYear', 'restocks'));
     }
 
     public function sendGmail($id)
@@ -306,4 +310,5 @@ class restockController extends Controller
         $gmailurl = "https://mail.google.com/mail/?view=cm&fs=1" . "&to=" . urlencode($to) . "&su=" . urlencode($subject) . "&body=" . urlencode($body);
         return redirect()->away($gmailurl);
     }
+
 }

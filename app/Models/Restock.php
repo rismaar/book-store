@@ -59,4 +59,12 @@ class Restock extends Model
     {
         return 'id_restock';
     }
+
+    public function scopeFilterByYear($query, $year)
+    {
+        if($year){
+            return $query->whereYear('restock_date', $year);
+        }
+        return $query;
+    }
 }

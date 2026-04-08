@@ -5,7 +5,7 @@
 <div class="d-flex flex-wrap gap-3 justify-content-center">
     @foreach ($books as $book)
         <div class="mr-3">
-            <div class="card text-white" style="width: 17rem; background-color: #3b38a0; border: none;">
+            <div class="card shadow-lg" style="width: 17rem; border: none;">
                 <img src="{{ asset('storage/cover/' . $book->image) }}" 
                      class="card-img-top" 
                      style="object-fit: cover; height: 400px;">
@@ -13,7 +13,7 @@
                     <h5 class="card-title text-truncate">{{ $book->title }}</h5>
                     <p class="card-text">Rp {{ number_format($book->selling_price, 0, ',', '.') }}</p>
                     <a href="#" 
-                       class="btn d-flex justify-content-center fw-bold text-white" style="background-color: #f8f8f875"
+                       class="btn d-flex justify-content-center fw-bold bg-info-subtle" style="background-color: #f8f8f875"
                        data-bs-toggle="modal" 
                        data-bs-target="#detailModal{{ $book->isbn }}">See Detail</a>
                 </div>

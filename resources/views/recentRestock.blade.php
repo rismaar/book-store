@@ -16,7 +16,7 @@
     </div>
 @endif
 
-<h5 class="title mb-3">Recent Restock Requests</h5>
+<h5 class="title mb-3">Recent Restock Requests {{ $selectedYear }}</h5>
 <div class="container-fluid mb-3">
     <div class="row">
         <div class="col-md-6">
@@ -53,7 +53,7 @@
             </tr>
         </thead>
         <tbody class="justify-content-center">
-            @foreach ($restock as $res)
+            @foreach ($restocks as $res)
                 <tr>
                     <td>{{ $res->id_restock }}</td>
                     <td>{{ \Carbon\Carbon::parse($res->restock_date)->translatedFormat('d F Y') }}</td>

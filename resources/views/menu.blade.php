@@ -39,7 +39,7 @@
     </div>
 
     <div class="col-sm-6 h-100 mt-3">
-        <a href="{{ route('recent') }}" class="text-decoration-none">
+        <a href="{{ route('recent') }}" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#historyModal">
             <div class="card h-100 border-0 shadow-lg stat-card">
                 <div class="stat-header bg-info text-white p-3">
                     <b>History</b>
@@ -55,6 +55,32 @@
         </a>
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="historyModal" 
+        data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="historyModalLabel" 
+        aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="historyModalLabel">
+                    Choose History Periode
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('recent') }}" method="GET">
+                    <select name="year" id="year" class="form-control p-3 my-3">
+                        @foreach ($availableYears as $avl)
+                            <option value="{{ $avl }}">{{ $avl }}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn d-flex justify-content-center bg-info-subtle fw-bold w-100">See History</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
 
-<h3><i class="fa-solid fa-database mr-3" style="color: #8a1480;"></i><b>Request</b></h3>
 <div class="container-fluid shadow-lg rounded-3 mt-3">
-    <form action="{{ route('storeRest') }}" method="POST" class="p-5">
+    <h3 class="mt-3 p-3"><i class="fa-solid fa-code-pull-request me-2" style="color: #3B38A0"></i><b>Request</b></h3>
+    <form action="{{ route('storeRest') }}" method="POST" class="p-3">
     @csrf
-        <select name="supplier_id" id="supplier" class="form-control" required>
+        <select name="supplier_id" id="supplier" class="form-control p-3" required>
             <option value="">Pilih Supplier</option>
             @foreach($suppliers as $s)
                 <option value="{{ $s->siup }}">{{ $s->nama_perusahaan }}</option>
@@ -15,21 +15,21 @@
         <div id="produk-wrapper">
             <div class="row mb-2">
                 <div class="col-md-4">
-                    <select name="produk[]" class="form-control product-select">
+                    <select name="produk[]" class="form-control product-select p-3">
                         <option value="">Pilih Produk</option>
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <input type="number" name="qty[]" class="form-control" placeholder="Qty">
+                    <input type="number" name="qty[]" class="form-control p-3" placeholder="Qty">
                 </div>
                 <div class="col-md-3">
-                    <input type="number" name="harga[]" class="form-control price-input"
+                    <input type="number" name="harga[]" class="form-control price-input p-3"
                         min="0" required>
                 </div>
             </div>
         </div>
-        <button type="button" id="addItem" class="btn btn-success mb-3"><i class="fa-solid fa-circle-plus mr-3"></i><b>Tambah Produk</b></button>
-        <button type="submit" class="btn btn-primary mb-3"><b>Request Restock</b></button>
+        <button type="button" id="addItem" class="btn btn-success mb-3"><i class="fa-solid fa-circle-plus me-2"></i><b>Add Product</b></button>
+        <button type="submit" class="btn mb-3 text-white" style="background-color: #3B38A0"><b>Request</b></button>
     </form>
 </div>
 
