@@ -182,7 +182,7 @@ class restockController extends Controller
             <div class="info" >
                 '.$watermark.'
             
-                <h1>Salemba</h1>
+                <img src="'.public_path('img/lo.png').'" style="width: 10em" alt="">
                 <h3>Request Invoice</h3>
 
                 <p>

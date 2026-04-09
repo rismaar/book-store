@@ -54,7 +54,7 @@
             <label for="nama_kategori" class="col-form-label">Kategori</label>
             <input type="text" id="nama_kategori" name="nama_kategori" class="form-control" required>
         </div>
-        <button type="submit" class="btn text-white" style="background-color: #3B38A0"><b>Simpan</b></button>
+        <button type="submit" class="btn text-white" style="background-color: #3B38A0"><b>Save</b></button>
     </form>
 </div>
 

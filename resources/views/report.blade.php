@@ -44,7 +44,7 @@
 <body>
 
     <div class="header">
-        <h2>Salemba Book</h2>
+        <img src="{{ asset('img/lo.png') }}" style="width: 15em" alt="">
         <p>Sales Report</p>
         <p>Periode: {{ \Carbon\Carbon::parse($start)->translatedFormat('d F Y') ?? '-' }} s/d {{ \Carbon\Carbon::parse($end)->translatedFormat('d F Y') ?? '-' }}</p>
     </div>
@@ -94,7 +94,7 @@
     </div>
     <br><br>
     <div style="text-align:right;">
-        <p>Admin,</p>
+        <p>{{ auth()->user()->name }},</p>
         <br><br>
         <p>______________________</p>
     </div>

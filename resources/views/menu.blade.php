@@ -76,7 +76,7 @@
                             <option value="{{ $avl }}">{{ $avl }}</option>
                         @endforeach
                     </select>
-                    <button type="submit" class="btn d-flex justify-content-center bg-info-subtle fw-bold w-100">See History</button>
+                    <button type="submit" class="btn d-flex justify-content-center bg-info text-white fw-bold w-100">See History</button>
                 </form>
             </div>
         </div>

@@ -38,7 +38,7 @@
       overflow: hidden; 
     }
     .btn-login {
-      background-color:  #ffffff38 !important;
+      background-color:  #9593c46b !important;
       color: #fff;
       font-weight: 700;
     }
@@ -61,7 +61,7 @@
          style="width: 280px; height: 100vh; z-index: 1000; background-color: #3B38A0;">
         <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none px-2 py-3">
           <i class="bi bi-grid-3x3-gap-fill me-2"></i>
-          <span class="fs-2 fw-bold" style="font-color: #FF7F11">Salemba Book</span>
+          <img src="{{ asset('img/lo.png') }}" style="width: 13em" class="mt-2 d-flex justify-content-center" alt="">
         </a>
 
         <hr class="text-white">
@@ -123,14 +123,14 @@
 
    @guest
      <div class="col px-0">
-      <nav class="navbar navbar-expand-lg border-bottom sticky-top p-4" style="background-color: #3B38A0;">
+      <nav class="navbar navbar-expand-lg sticky-top p-4 shadow-lg" style="background-color: #3B38A0;" >
         <div class="container-fluid">
           <div class="d-flex align-items-center">
             <button class="btn btn-light d-lg-none me-2" id="btnToggleSidebar">
               <i class="bi bi-list"></i>
             </button>
             @guest
-              <span class="fw-semibold text-white">Salemba Book</span>
+              <img src="{{ asset('img/lo.png') }}" style="width: 10em" alt="">
             @endguest
           </div>
           <form class="d-none d-md-flex ms-3 flex-grow-1" role="search" action="{{ route('search') }}" method="GET">

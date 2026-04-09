@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<h1 class="text-center mb-3">Fiksi Fantasi</h1>
+<h1 class="text-center mb-3"><b>- Fiksi Fantasi -</b></h1>
 <div class="d-flex flex-wrap gap-3 justify-content-center">
     @foreach ($books as $book)
         <div class="mr-3">

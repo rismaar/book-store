@@ -6,7 +6,7 @@
     <form action="{{ route('storeRest') }}" method="POST" class="p-3">
     @csrf
         <select name="supplier_id" id="supplier" class="form-control p-3" required>
-            <option value="">Pilih Supplier</option>
+            <option value="">Choose Supplier</option>
             @foreach($suppliers as $s)
                 <option value="{{ $s->siup }}">{{ $s->nama_perusahaan }}</option>
             @endforeach
@@ -16,7 +16,7 @@
             <div class="row mb-2">
                 <div class="col-md-4">
                     <select name="produk[]" class="form-control product-select p-3">
-                        <option value="">Pilih Produk</option>
+                        <option value="">Choose Product</option>
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -49,7 +49,7 @@
             }
 
             function populateProducts(products, targetSelect = null) {
-                const options = ['<option value="">Pilih Produk</option>'];
+                const options = ['<option value="">Choose Product</option>'];
 
                 products.forEach(p => {
                     options.push(`<option value="${p.isbn}">${p.title}</option>`);
@@ -104,15 +104,15 @@
                 row.innerHTML = `
                     <div class="row">
                         <div class="col-md-4">
-                            <select name="produk[]" class="form-control product-select">
-                                <option value="">Pilih Produk</option>
+                            <select name="produk[]" class="form-control product-select p-3">
+                                <option value="">Choose Product</option>
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <input type="number" name="qty[]" class="form-control" placeholder="Qty">
+                            <input type="number" name="qty[]" class="form-control p-3" placeholder="Qty">
                         </div>
                         <div class="col-md-3">
-                            <input type="number" name="harga[]" class="form-control price-input"
+                            <input type="number" name="harga[]" class="form-control price-input p-3"
                                 min="0" required>
                         </div>
                         <div class="col-md-2">
@@ -127,7 +127,7 @@
                 if (supplierId && productCache.has(supplierId)) {
                     populateProducts(productCache.get(supplierId), newSelect);
                 } else {
-                    newSelect.innerHTML = '<option value="">Pilih Produk</option>';
+                    newSelect.innerHTML = '<option value="">Choose Product</option>';
                 }
                 document.addEventListener('click', function (e) {
                     if (e.target.classList.contains('remove-item')) {
