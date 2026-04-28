@@ -32,8 +32,8 @@
     <table id="table" class="table table-stripped">
         <thead align="center">
             <tr>
-                <th class="bg-secondary-subtle">Id Kategori</th>
-                <th class="bg-secondary-subtle">Kategori Buku</th>
+                <th class="bg-secondary-subtle">Category Id</th>
+                <th class="bg-secondary-subtle">Book Category</th>
             </tr>  
         </thead>
         <tbody align="center">

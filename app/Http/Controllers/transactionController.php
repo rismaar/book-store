@@ -118,8 +118,8 @@ class transactionController extends Controller
 
         <p>
             ID: '.$transaksi->id_transaksi.'<br>
-            Tanggal: '. \Carbon\Carbon::parse($transaksi->tanggal)->translatedFormat('d F Y') .'<br>
-            Bayar: '.$transaksi->metode_pembayaran.'
+            Date: '. \Carbon\Carbon::parse($transaksi->tanggal)->translatedFormat('d F Y') .'<br>
+            Payment Method: '.$transaksi->metode_pembayaran.'
         </p>
 
         <div class="line"></div>
@@ -133,7 +133,7 @@ class transactionController extends Controller
             </tr>
             <tr>
                 <td>'.$d->jumlah.' x '.number_format($d->price,2).'</td>
-                <td align="right">Rp. '.number_format($d->total,2).'</td>
+                <td align="right">IDR. '.number_format($d->total,2).'</td>
             </tr>';
         }
         $html .= '
@@ -143,7 +143,7 @@ class transactionController extends Controller
         <table>
             <tr>
                 <td><b>TOTAL</b></td>
-                <td align="right"><b>Rp. '.number_format($transaksi->grand_total,2).'</b></td>
+                <td align="right"><b>IDR. '.number_format($transaksi->grand_total,2).'</b></td>
             </tr>
         </table>
         <div class="line"></div>
@@ -152,7 +152,8 @@ class transactionController extends Controller
         </div>
         <div class="left">
             <b>NOTES: </b><br>
-            Barang yang sudah dibeli tidak dapat dikembalikan!
+            Items that have already been purchased cannot be returned or exchanged.<br>
+            Please keep this receipt as proof of purchase.
         </div>
         ';
 

@@ -13,12 +13,11 @@ class dashboardController extends Controller
     {
         $kategoriData = DB::table('buku')->join('kategori', 'buku.categories', '=', 'kategori.id_kategori')
                         ->select('kategori.nama_kategori as kategori', DB::raw('COUNT(buku.isbn) as total'))->groupBy('kategori.nama_kategori')->get();
-        $recentTransaction = Transaksi::latest()->take(4)->get();
+        $recentTransaction = Transaksi::latest()->take(5)->get();
         $start = $request->start_date;
         $end = $request->end_date;
         $totalProduk = Buku::count();
         $query = Transaksi::with('details.buku');
-
         if($start && $end){
             $query->whereBetween('tanggal', [$start, $end]);
         }

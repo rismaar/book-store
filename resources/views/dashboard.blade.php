@@ -12,93 +12,142 @@
     }
     #invoice-detail th, #invoice-detail td {
         border: 1px solid #ddd;
-        padding: 8px;
+        padding: 8em;
     }
     #invoice-detail th {
         background-color: #f2f2f2;
         text-align: left;
     }
-
 </style>
-
-    @guest
-
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
+@guest
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+    <h1 style="font-family:; font-size: 80px; font-weight:900; "
+        class="title-text-center d-flex justify-content-center mt-5">TOP CATEGORIES
+    </h1>
+    <div class="container-fluid px-0 py-5 w-100">
+        <div class="row g-4">
+            <div class="col-12 col-lg-3">
+                <a href="{{ route('sejarah') }}" style="text-decoration: none">
+                    <div class="card h-100">
+                        <img src="{{ asset('img/history.jpg') }}" class="card-img-top object-fit-cover"  style="height: 400px;" alt="...">
+                        <div class="card-body">
+                            <h2><b>History</b></h2>
+                            <p class="card-text">Fiction Animations are perfect for children who enjoy reading, featuring interactive visuals</p>
+                        </div>
+                    </div>
+                </a>
             </div>
-        @endif
-        <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 50px; font-weight:900; "
-            class="title-text-center d-flex justify-content-center">Our Best Categories!</h1>
-        <div class="d-flex justify-content-center my-3">
-            <div id="carouselExampleCaptions" class="carousel slide w-75" style="width: 600px;">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
-                        aria-label="Slide 4"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
-                        aria-label="Slide 5"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active w-90">
-                        <a href="{{ route('animate') }}">
-                            <img src="../img/animfict.jpg" class="d-block w-100" style="object-fit: cover;" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1><b>Animasi Fiksi</b></h1>
-                            </div>
-                        </a>
+            <div class="col-12 col-lg-3 ">
+                <a href="{{ route('mistery') }}" style="text-decoration: none">
+                    <div class="card h-100" >
+                        <img src="{{ asset('img/mistery.jpeg') }}" class="card-img-top object-fit-cover" style="height: 400px;" alt="...">
+                        <div class="card-body">
+                            <h2><b>Mistery</b></h2>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <a href="{{ route('sejarah') }}">
-                            <img src="../img/history.jpg" class="d-block w-100" style="object-fit: cover;" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1><b>Sejarah</b></h1>
-                            </div>
-                        </a>
+                </a>
+            </div>
+            <div class="col-12 col-lg-3 ">
+                <a href="{{ route('fiksi') }}" style="text-decoration: none">
+                    <div class="card h-100" >
+                        <img src="{{ asset('img/fantasi.jpg') }}" class="card-img-top object-fit-cover" style="height: 400px;" alt="...">
+                        <div class="card-body">
+                            <h2><b>Fiction Fantasy</b></h2>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <a href="{{ route('fiksi') }}">
-                            <img src="../img/fantasi.jpg" class="d-block w-100" alt="..." style="object-fit: cover;">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1><b>Fiksi Fantasi</b></h1>
-                            </div>
-                        </a>
+                </a>
+            </div>
+            <div class="col-12 col-lg-3">
+                <a href="{{ route('novels') }}" style="text-decoration: none">
+                    <div class="card h-100" >
+                        <img src="{{ asset('img/novel_cover.jpeg') }}" class="card-img-top object-fit-cover" style="height: 400px;" alt="...">
+                        <div class="card-body">
+                            <h2><b>Novel</b></h2>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <a href="{{ route('mistery') }}">
-                            <img src="../img/mistery.jpg" class="d-block w-100" alt="..." style="object-fit: cover;">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1><b>Misteri</b></h1>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="{{ route('novels') }}">
-                            <img src="../img/novel_cover.jpeg" class="d-block w-100" alt="..." style="object-fit: cover;">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1><b>Novel</b></h1>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                </a>
             </div>
         </div>
-    @endguest
+    </div>
+    <div class="container-fluid rounded-5 p-5" style="background-color: #3b38a0">
+        <p class="text-white">Our Books Recomendation</p>
+        <div class="d-flex flex-wrap justify-content-center gap-5 py-5">
+            <div class="text-center">
+                <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 69.000">
+                    <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
+                        <img src="{{ asset('img/animal_farm.jpg') }}" style="height: 15rem; width: 12rem; " alt="" srcset="">
+                    </div>
+                </button>
+                <font color="white">
+                    <div class="mt-3">
+                        <h5 class="mb-1">Animal Farm</h5>
+                        <p>George Orwell</p>
+                    </div>
+                </font>
+            </div>
+            <div class="text-center">
+                <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 150.000">
+                    <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
+                        <img src="{{ asset('img/catatan_pulau_buru.jpg') }}" style="height: 15rem; width: 12rem; " alt="" srcset="">
+                    </div>
+                </button>
+                <font color="white">
+                    <div class="mt-3">
+                        <h5 class="mb-1">Perawan Remaja dalam</h5>
+                            <h5>Cengkraman Militer</h5>
+                        <p>Pramoedya Ananta Toer</p>
+                    </div>
+                </font>
+            </div>
+            <div class="text-center ">
+                <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 135.000">
+                    <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
+                        <img src="{{ asset('img/laut_bercerita.jpg') }}" style="height: 15rem; width: 12rem; " alt="" srcset="">
+                    </div>
+                </button>
+                <font color="white">
+                    <div class="mt-3">
+                        <h5 class="mb-1">Laut Bercerita</h5>
+                        <p>Leila S. Chudori</p>
+                    </div>
+                </font>
+            </div>
+            <div class="text-center ">
+                <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 120.000">
+                    <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
+                        <img src="{{ asset('img/ronggeng_dukuh.jpg') }}" style="height: 15rem; width: 12rem; " alt="" srcset="">
+                    </div>
+                </button>
+                <font color="white">
+                    <div class="mt-3">
+                        <h5 class="mb-1">Ronggeng Dukuh</h5>
+                        <p>Ahmad Tohari</p>
+                    </div>
+                </font>
+            </div>
+            <div class="text-center ">
+                <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 300.000">
+                    <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
+                        <img src="{{ asset('img/madilog.jpg') }}" style="height: 15rem; width: 12rem; " alt="" srcset="">
+                    </div>
+                </button>
+                <font color="white">
+                    <div class="mt-3">
+                        <h5 class="mb-1">Madilog</h5>
+                        <p>Tan Malaka</p>
+                    </div>
+                </font>
+            </div>
+        </div>
+    </div>
+@endguest
 
 @auth
     @if (auth()->user()->role === 'kasir')
@@ -125,11 +174,11 @@
                 <thead>
                     <tr>
                         <th class="bg-warning text-light">No</th>
-                        <th class="bg-warning text-light">ID Transaksi</th>
-                        <th class="bg-warning text-light">Tanggal</th>
-                        <th class="bg-warning text-light">Metode Pembayaran</th>
-                        <th class="bg-warning text-light">Qty</th>
-                        <th class="bg-warning text-light">Total</th>
+                        <th class="bg-warning text-light">Transaction Id</th>
+                        <th class="bg-warning text-light">Date</th>
+                        <th class="bg-warning text-light">Payment Method</th>
+                        <th class="bg-warning text-light">Quantity</th>
+                        <th class="bg-warning text-light">Amount</th>
                         <th class="bg-warning text-light">Detail</th>
                     </tr>
                 </thead>
@@ -141,7 +190,7 @@
                             <td class="p-3">{{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d F Y') }}</td>
                             <td class="p-3">{{ $t->metode_pembayaran }}</td>
                             <td class="p-3">{{ $t->details->sum('jumlah') }}</td>
-                            <td class="p-3">Rp. {{ number_format($t->grand_total, 2) }}</td>
+                            <td class="p-3">IDR. {{ number_format($t->grand_total, 2) }}</td>
                             <td class="p-3">
                                 <button type="button" 
                                     class="btn btn-link p-0 border-0 shadow-none"
@@ -159,19 +208,19 @@
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                            <div class="modal-header">
+                            <div class="modal-header bg-warning text-white fw-bold">
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ $t->id_transaksi }}</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body invoice-content">
-                                <p><strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d F Y') }}</p>
+                                <p><strong>Date:</strong> {{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d F Y') }}</p>
                                 <table class="table table-stripped">
                                     <thead>
                                         <tr>
-                                        <th>Produk</th>
+                                        <th>Product</th>
                                         <th>Qty</th>
-                                        <th>Harga</th>
+                                        <th>Price</th>
                                         <th>Subtotal</th>
                                         </tr>
                                     </thead>
@@ -180,13 +229,13 @@
                                         <tr>
                                         <td>{{ $d->buku->title ?? $d->nama_produk }}</td>
                                         <td>{{ $d->jumlah }}</td>
-                                        <td>{{ number_format($d->price,2) }}</td>
-                                        <td>{{ number_format($d->total,2) }}</td>
+                                        <td>IDR. {{ number_format($d->price,2) }}</td>
+                                        <td>IDR. {{ number_format($d->total,2) }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <p><strong>Total:</strong> {{ number_format($t->grand_total,2) }}</p>
+                                <p><strong>Amount:</strong> IDR.  {{ number_format($t->grand_total,2) }}</p>
                             </div>
                         </div>
                     </div>
@@ -233,8 +282,8 @@
                             </div>
                         </div>
                     </a>
-                    <a href="{{ route('view.supp') }}" class="text-decoration-none flex-fill">
-                        <div class="card text-white h-100 p-3" style="background-color: #FF7F3E; border: none;">
+                    <a href="{{ route('view.supp') }}" class="text-decoration-none flex-fill ">
+                        <div class="card text-white h-100 p-3 bg-warning" style=" border: none;">
                             <div class="card-body d-flex align-items-center">
                                 <h3 class="card-title"><b>Supplier</b></h3>
                             </div>
@@ -243,20 +292,17 @@
                 </div>
             </div>
         </div>
-        
-        
-
         <div class="container-fluid bg-light shadow-lg p-3 mt-5">
             <p class="text-secondary">Recent Transactions</p>
             <table class="table table-stripped">
                 <thead>
                     <tr>
                         <th class="bg-warning text-light">No</th>
-                        <th class="bg-warning text-light">ID Transaksi</th>
-                        <th class="bg-warning text-light">Tanggal</th>
-                        <th class="bg-warning text-light">Metode Pembayaran</th>
+                        <th class="bg-warning text-light">Transaction Id</th>
+                        <th class="bg-warning text-light">Date</th>
+                        <th class="bg-warning text-light">Payment Method</th>
                         <th class="bg-warning text-light">Qty</th>
-                        <th class="bg-warning text-light">Total</th>
+                        <th class="bg-warning text-light">Amount</th>
                         <th class="bg-warning text-light">Detail</th>
                     </tr>
                 </thead>
@@ -268,7 +314,7 @@
                             <td class="p-3">{{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d F Y') }}</td>
                             <td class="p-3">{{ $t->metode_pembayaran }}</td>
                             <td class="p-3">{{ $t->details->sum('jumlah') }}</td>
-                            <td class="p-3">Rp. {{ number_format($t->grand_total, 2) }}</td>
+                            <td class="p-3">IDR. {{ number_format($t->grand_total, 2) }}</td>
                             <td class="p-3">
                                 <button type="button" 
                                     class="btn btn-link p-0 border-0 shadow-none"
@@ -282,23 +328,23 @@
                 </tbody>
             </table>
             @foreach ($transaksi as $t)
-                <div class="modal fade" id="staticBackdrop{{ $t->id_transaksi }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                <div class="modal fade border-0" id="staticBackdrop{{ $t->id_transaksi }}" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ $t->id_transaksi }}</h1>
+                            <div class="modal-header bg-warning text-white">
+                                <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel">{{ $t->id_transaksi }}</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body invoice-content">
-                                <p><strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d F Y') }}</p>
+                                <p><strong>Date:</strong> {{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d F Y') }}</p>
                                 <table class="table table-stripped">
                                     <thead>
                                         <tr>
-                                        <th>Produk</th>
+                                        <th>Product</th>
                                         <th>Qty</th>
-                                        <th>Harga</th>
+                                        <th>Price</th>
                                         <th>Subtotal</th>
                                         </tr>
                                     </thead>
@@ -307,13 +353,13 @@
                                         <tr>
                                         <td>{{ $d->buku->title ?? $d->nama_produk }}</td>
                                         <td>{{ $d->jumlah }}</td>
-                                        <td>Rp. {{ number_format($d->price,2) }}</td>
-                                        <td>Rp. {{ number_format($d->total,2) }}</td>
+                                        <td>IDR. {{ number_format($d->price,2) }}</td>
+                                        <td>IDR. {{ number_format($d->total,2) }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <p><strong>Total:</strong>Rp. {{ number_format($t->grand_total,2) }}</p>
+                                <p><strong>Amount:</strong>IDR. {{ number_format($t->grand_total,2) }}</p>
                             </div>
                         </div>
                     </div>
@@ -338,20 +384,20 @@
         beforeDraw(chart) {
             const { width } = chart;
             const { height } = chart;
-            const ctx = chart.ctx;
+            const ct = chart.ctx;
 
-            ctx.restore();
-            ctx.font = 'bold 28px Arial';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillStyle = '#FF0000';
+            ct.restore();
+            ct.font = 'bold 40px Arial';
+            ct.textAlign = 'center';
+            ct.textBaseline = 'middle';
+            ct.fillStyle = '#FF0000';
 
-            ctx.fillText(
+            ct.fillText(
                 {{ $totalProduk }},
                 width / 2,
                 height / 3
             );
-            ctx.save();
+            ct.save();
         }
     };
 
@@ -362,11 +408,11 @@
             datasets: [{
                 data: data,
                 backgroundColor: colors,
-                borderWidth: 0
+                borderWidth: 3
             }]
         },
         options: {
-            cutout: '75%',
+            cutout: '70%',
             plugins: {
                 legend: {
                     position: 'bottom'
@@ -376,4 +422,5 @@
         plugins: [centerText]
     });
 </script>
+
 @endsection

@@ -13,7 +13,7 @@
                     <h5 class="card-title text-truncate">{{ $book->title }}</h5>
                     <p class="card-text">Rp {{ number_format($book->selling_price, 0, ',', '.') }}</p>
                     <a href="#" 
-                       class="btn d-flex justify-content-center fw-bold bg-info-subtle" style="background-color: #f8f8f875"
+                       class="btn d-flex justify-content-center fw-bold text-white" style="background-color: #3b38a0"
                        data-bs-toggle="modal" 
                        data-bs-target="#detailModal{{ $book->isbn }}">See Detail</a>
                 </div>
@@ -26,7 +26,7 @@
              aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header text-white" style="background-color: #3b38a0">
                         <h1 class="modal-title fs-5" id="detailModalLabel{{ $book->isbn }}">
                             {{ $book->title }}
                         </h1>

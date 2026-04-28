@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('img/lo.png') }}" type="image/png">
     <link 
         rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
         <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css" />
-        
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <title>Salemba Book</title>
   <style>
     .nav-link.active{
-      background-color: #BDE8F5 !important;
-      color: #0F2854 !important;
-      font-weight: 700;
+      background-color: #FFDE42 !important;
+      color: #3B38A0 !important;
+      font-weight: 800;
     }
     @media (min-width: 992px) {
         .sidebar-offset {
@@ -46,16 +45,32 @@
       background-color: #3B38A0 !important;
       color: #fff;
     }
+    html::-webkit-scrollbar{
+      display: none;
+    }
+    .btn:focus,
+    .btn:active,
+    .btn:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+    }
+    
+    ::placeholder{
+        color: #ffffff !important;
+        opacity: 1 !important;
+        font-weight: 500;
+    }
   </style>
 </head>
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js"></script>
-<body>
 
+<body>
 <div class="container-fluid">
   <div class="row flex-nowrap">
-   
   @auth
       <nav id="sidebar" class="position-fixed d-lg-flex flex-column" 
          style="width: 280px; height: 100vh; z-index: 1000; background-color: #3B38A0;">
@@ -70,7 +85,7 @@
             <li class="nav-item mb-3">
                 <a href="{{ route('dashboard') }}"
                   class="nav-link d-flex align-items-center p-3 text-white fw-bold
-                  {{ Request::routeIs('dashboard') ? 'active' : 'text-dark' }}">
+                  {{ Request::routeIs('dashboard') ? 'active' : 'text-white' }}">
                     <i class="fa-solid fa-house fa-lg me-3"></i>
                     Dashboard
                 </a>
@@ -119,57 +134,45 @@
       </nav>
   @endauth
     
-    
+  </div>
+</div>
+@guest
+  <nav class="navbar navbar-expand-lg sticky-top px-4 py-4 shadow-lg" style="background-color: #3B38A0;" >
+    <div class="container-fluid">
+      <div class="d-flex align-items-center">
+        <button class="btn btn-light d-lg-none me-2" id="btnToggleSidebar">
+          <i class="bi bi-list"></i>
+        </button>
+        <img src="{{ asset('img/lo.png') }}" style="width: 10em" alt="">
+      </div>
+      <form class="d-none d-md-flex ms-3 flex-grow-1" role="search" action="{{ route('search') }}" method="GET">
+          <input
+            class="form-control rounded-5 border-start-0 p-4 " style="border: none; background-color: #ffffff42;"
+            type="search"
+            placeholder="Search your product here.."
+            aria-label="Search"
+            name="q" value="{{ request('q') }}">
+      </form>
 
-   @guest
-     <div class="col px-0">
-      <nav class="navbar navbar-expand-lg sticky-top p-4 shadow-lg" style="background-color: #3B38A0;" >
-        <div class="container-fluid">
-          <div class="d-flex align-items-center">
-            <button class="btn btn-light d-lg-none me-2" id="btnToggleSidebar">
-              <i class="bi bi-list"></i>
-            </button>
-            @guest
-              <img src="{{ asset('img/lo.png') }}" style="width: 10em" alt="">
-            @endguest
-          </div>
-          <form class="d-none d-md-flex ms-3 flex-grow-1" role="search" action="{{ route('search') }}" method="GET">
-            <div class="input-group">
-              
-              <input
-                class="form-control border-start-0 p-3" style="border: none;"
-                type="search"
-                placeholder="Search your product here.."
-                aria-label="Search"
-                name="q" value="{{ request('q') }}"
-              >
-            </div>
-          </form>
-
-          <div class="d-flex align-items-center gap-2 ms-3">
-            @guest
-              <a href="{{ route('login') }}" class="btn btn-login d-flex align-items-center justify-content-center">
-                Login
-              </a>
-            @endguest
-          </div>
-        </div>
-      </nav>
-   @endguest 
-      <div class="container-fluid p-3 w-100">
-        @guest
-            @if (session('success'))
-                <div class="alert alert-success"><i class="fa-solid fa-circle-check me-2"></i>
-                    {{ session('success') }}
-                </div>
-            @endif
-        @endguest
-        <main class="@auth sidebar-offset @endauth flex-grow-1">
-          @yield('content')
-        </main>
+      <div class="d-flex align-items-center gap-2 ms-3">
+          <a href="{{ route('login') }}" class="btn btn-login d-flex align-items-center justify-content-center">
+            Login
+          </a>
       </div>
     </div>
-  </div>
+  </nav>
+@endguest 
+<div class="p-3 w-100">
+  @guest
+    @if (session('success'))
+      <div class="alert alert-success"><i class="fa-solid fa-circle-check me-2"></i>
+          {{ session('success') }}
+      </div>
+    @endif
+  @endguest
+  <main class="@auth sidebar-offset @endauth flex-grow-1">
+    @yield('content')
+  </main>
 </div>
    <script>
         $(document).ready(function () {
@@ -193,6 +196,9 @@
             sidebar.classList.toggle('show');
           });
         }
+
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
    </script>
   @stack('scripts')
 </body>

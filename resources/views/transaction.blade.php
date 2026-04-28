@@ -56,7 +56,7 @@
                     <td>{{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d F Y') }}</td>
                     <td>{{ $t->metode_pembayaran }}</td>
                     <td>{{ $t->details->sum('jumlah') }}</td>
-                    <td>Rp. {{ number_format($t->grand_total, 2) }}</td>
+                    <td>IDR. {{ number_format($t->grand_total, 2) }}</td>
                     <td class="d-flex justify-content-center">
                         <button type="button" class="btn" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop{{ $t->id_transaksi }}" >
@@ -94,13 +94,13 @@
                                 <tr>
                                     <td><img src="{{ asset('storage/cover/' . $d->buku->image) }}" width="80" alt=""> {{ $d->buku->title ?? $d->nama_produk }}</td>
                                     <td>{{ $d->jumlah }}</td>
-                                    <td>Rp. {{ number_format($d->price,2) }}</td>
-                                    <td>Rp. {{ number_format($d->total,2) }}</td>
+                                    <td>IDR. {{ number_format($d->price,2) }}</td>
+                                    <td>IDR. {{ number_format($d->total,2) }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <p><strong>Total:</strong>Rp. {{ number_format($t->grand_total,2) }}</p>
+                        <p><strong>Total:</strong>IDR. {{ number_format($t->grand_total,2) }}</p>
                     </div>
                 </div>
             </div>
