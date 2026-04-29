@@ -208,7 +208,7 @@ class restockController extends Controller
                         <tr>
                             <td>'.$detail->book->title.'</td>
                             <td class="text-right">'.$detail->qty.'</td>
-                            <td class="text-right">IDR '.number_format($detail->harga).'</td>
+                            <td class="text-right">IDR '.number_format($detail->harga, 2).'</td>
                             <td class="text-right">IDR '.number_format($detail->subtotal, 2).'</td>
                         </tr>
                     ';
@@ -224,8 +224,8 @@ class restockController extends Controller
                 <div class="line"></div>
 
                 <p>
-                    Email us at: <i>call@griyabaca.com</i><br>
-                    Address: <i>Jl. Raya Pajajaran No. 88, Bogor</i>
+                    Email us at: <i>call@salembaBook.com</i><br>
+                    Address: <i>Jl. Mawar, Bogor</i>
                 </p>
                 ';
             $html .= '

@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
+<style>
+    .btn-close{
+        filter: invert(1);
+    }
+</style>
+
 <h1 class="text-center mb-3"><b>- Fiktion Fantasy -</b></h1>
 <div class="d-flex flex-wrap gap-3 justify-content-center">
     @foreach ($books as $book)
@@ -12,10 +18,12 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $book->title }}</h5>
                     <p class="card-text">Rp {{ number_format($book->selling_price, 0, ',', '.') }}</p>
-                    <a href="#" 
-                       class="btn d-flex justify-content-center fw-bold text-white" style="background-color: #3b38a0"
-                       data-bs-toggle="modal" 
-                       data-bs-target="#detailModal{{ $book->isbn }}">See Detail</a>
+                    <div class="d-flex">
+                        <a href="#" 
+                        class="btn ms-auto rounded-pill fw-bold text-white" style="background-color: #3b38a0"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#detailModal{{ $book->isbn }}"><i class="fa-solid fa-angle-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>

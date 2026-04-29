@@ -14,9 +14,10 @@
     <title>Salemba Book</title>
   <style>
     .nav-link.active{
-      background-color: #FFDE42 !important;
+      background-color: #ebebeb !important;
       color: #3B38A0 !important;
-      font-weight: 800;
+      border-radius: 100px;
+      font-size: 18px;
     }
     @media (min-width: 992px) {
         .sidebar-offset {
@@ -85,7 +86,7 @@
             <li class="nav-item mb-3">
                 <a href="{{ route('dashboard') }}"
                   class="nav-link d-flex align-items-center p-3 text-white fw-bold
-                  {{ Request::routeIs('dashboard') ? 'active' : 'text-white' }}">
+                  {{ Request::routeIs('dashboard') ? 'active' : 'text-dark' }}">
                     <i class="fa-solid fa-house fa-lg me-3"></i>
                     Dashboard
                 </a>

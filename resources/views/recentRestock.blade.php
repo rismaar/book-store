@@ -81,7 +81,7 @@
                             </table>
                         </div>
                     </td>
-                    <td>Rp. {{ number_format($res->total, 2) }} @if ($res->status === 'accepted') <b class="text-success">(PAID)</b>
+                    <td>IDR. {{ number_format($res->total, 2) }} @if ($res->status === 'accepted') <b class="text-success">(PAID)</b>
                         
                     @endif</td>
                     <td class="text-end" >

@@ -31,48 +31,40 @@
     <div class="container-fluid px-0 py-5 w-100">
         <div class="row g-4">
             <div class="col-12 col-lg-3">
-                <a href="{{ route('sejarah') }}" style="text-decoration: none">
-                    <div class="card h-100">
-                        <img src="{{ asset('img/history.jpg') }}" class="card-img-top object-fit-cover"  style="height: 400px;" alt="...">
-                        <div class="card-body">
-                            <h2><b>History</b></h2>
-                            <p class="card-text">Fiction Animations are perfect for children who enjoy reading, featuring interactive visuals</p>
-                        </div>
+                <div class="card h-100">
+                    <img src="{{ asset('img/history.jpg') }}" class="card-img-top object-fit-cover"  style="height: 400px;" alt="...">
+                    <div class="card-body d-flex justify-content-between">
+                        <h2><b>History</b></h2>
+                        <a href="{{ route('sejarah') }}" class="btn text-white rounded-pill fw-bold ms-auto" style="background-color: #3b38a0"><i class="fa-solid fa-angle-right fa-xl"></i></a>
                     </div>
-                </a>
+                </div>
             </div>
             <div class="col-12 col-lg-3 ">
-                <a href="{{ route('mistery') }}" style="text-decoration: none">
-                    <div class="card h-100" >
-                        <img src="{{ asset('img/mistery.jpeg') }}" class="card-img-top object-fit-cover" style="height: 400px;" alt="...">
-                        <div class="card-body">
-                            <h2><b>Mistery</b></h2>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-                        </div>
+                <div class="card" >
+                    <img src="{{ asset('img/mistery.jpeg') }}" class="card-img-top object-fit-cover" style="height: 400px;" alt="...">
+                    <div class="card-body d-flex justify-content-between">
+                        <h2><b>Mistery</b></h2>
+                        <a href="{{ route('mistery') }}" class="btn text-white rounded-pill fw-bold ms-auto" style="background-color: #3b38a0"><i class="fa-solid fa-angle-right fa-xl"></i></a>
                     </div>
-                </a>
+                </div>
             </div>
             <div class="col-12 col-lg-3 ">
-                <a href="{{ route('fiksi') }}" style="text-decoration: none">
-                    <div class="card h-100" >
-                        <img src="{{ asset('img/fantasi.jpg') }}" class="card-img-top object-fit-cover" style="height: 400px;" alt="...">
-                        <div class="card-body">
-                            <h2><b>Fiction Fantasy</b></h2>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-                        </div>
+                <div class="card h-100" >
+                    <img src="{{ asset('img/fantasi.jpg') }}" class="card-img-top object-fit-cover" style="height: 400px;" alt="...">
+                    <div class="card-body d-flex justify-content-between">
+                        <h2><b>Fiction Fantasy</b></h2>
+                        <a href="{{ route('fiksi') }}" class="btn text-white rounded-pill fw-bold ms-auto" style="background-color: #3b38a0"><i class="fa-solid fa-angle-right fa-xl"></i></a>
                     </div>
-                </a>
+                </div>
             </div>
             <div class="col-12 col-lg-3">
-                <a href="{{ route('novels') }}" style="text-decoration: none">
-                    <div class="card h-100" >
-                        <img src="{{ asset('img/novel_cover.jpeg') }}" class="card-img-top object-fit-cover" style="height: 400px;" alt="...">
-                        <div class="card-body">
-                            <h2><b>Novel</b></h2>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-                        </div>
+                <div class="card h-100" >
+                    <img src="{{ asset('img/novel_cover.jpeg') }}" class="card-img-top object-fit-cover" style="height: 400px;" alt="...">
+                    <div class="card-body d-flex justify-content-between">
+                        <h2><b>Novel</b></h2>
+                        <a href="{{ route('novels') }}" class="btn text-white rounded-pill fw-bold ms-auto" style="background-color: #3b38a0"><i class="fa-solid fa-angle-right fa-xl"></i></a>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     </div>
@@ -82,7 +74,7 @@
             <div class="text-center">
                 <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 69.000">
                     <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
-                        <img src="{{ asset('img/animal_farm.jpg') }}" style="height: 15rem; width: 12rem; " alt="" srcset="">
+                        <img src="{{ asset('img/animal_farm.jpg') }}" style="height: 13rem; width: 10rem; " alt="" srcset="">
                     </div>
                 </button>
                 <font color="white">
@@ -95,7 +87,7 @@
             <div class="text-center">
                 <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 150.000">
                     <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
-                        <img src="{{ asset('img/catatan_pulau_buru.jpg') }}" style="height: 15rem; width: 12rem; " alt="" srcset="">
+                        <img src="{{ asset('img/catatan_pulau_buru.jpg') }}" style="height: 13rem; width: 10rem; " alt="" srcset="">
                     </div>
                 </button>
                 <font color="white">
@@ -109,7 +101,7 @@
             <div class="text-center ">
                 <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 135.000">
                     <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
-                        <img src="{{ asset('img/laut_bercerita.jpg') }}" style="height: 15rem; width: 12rem; " alt="" srcset="">
+                        <img src="{{ asset('img/laut_bercerita.jpg') }}" style="height: 13rem; width: 10rem; " alt="" srcset="">
                     </div>
                 </button>
                 <font color="white">
@@ -122,7 +114,7 @@
             <div class="text-center ">
                 <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 120.000">
                     <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
-                        <img src="{{ asset('img/ronggeng_dukuh.jpg') }}" style="height: 15rem; width: 12rem; " alt="" srcset="">
+                        <img src="{{ asset('img/ronggeng_dukuh.jpg') }}" style="height: 13rem; width: 10rem; " alt="" srcset="">
                     </div>
                 </button>
                 <font color="white">
@@ -135,7 +127,7 @@
             <div class="text-center ">
                 <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 300.000">
                     <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
-                        <img src="{{ asset('img/madilog.jpg') }}" style="height: 15rem; width: 12rem; " alt="" srcset="">
+                        <img src="{{ asset('img/madilog.jpg') }}" style="height: 13rem; width: 10rem; " alt="" srcset="">
                     </div>
                 </button>
                 <font color="white">
