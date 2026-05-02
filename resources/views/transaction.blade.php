@@ -60,9 +60,9 @@
                     <td class="d-flex justify-content-center">
                         <button type="button" class="btn" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop{{ $t->id_transaksi }}" >
-                            <i class="fa-solid fa-eye" style="color: #3B38A0"></i>
+                            <i class="fa-solid fa-eye" style="color: #000000"></i>
                         </button>
-                        <a href="{{ route('invoice', $t->id_transaksi) }}" target="_blank" class="btn ms-3"><i class="fa-solid fa-receipt" style="color: #3B38A0"></i></a> 
+                        <a href="{{ route('invoice', $t->id_transaksi) }}" target="_blank" class="btn ms-3"><i class="fa-solid fa-receipt" style="color: #000000"></i></a> 
                     </td>
                 </tr>
             @endforeach

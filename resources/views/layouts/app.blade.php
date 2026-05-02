@@ -6,11 +6,8 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="{{ asset('img/lo.png') }}" type="image/png">
-    <link 
-        rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        />
-        <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css" />
     <title>Salemba Book</title>
   <style>
     .nav-link.active{
@@ -39,8 +36,8 @@
     }
     .btn-login {
       background-color:  #9593c46b !important;
-      color: #fff;
-      font-weight: 700;
+      color: #fff !important;
+      font-weight: 700 !important;
     }
     .btn-login:hover {
       background-color: #3B38A0 !important;
@@ -79,9 +76,7 @@
           <i class="bi bi-grid-3x3-gap-fill me-2"></i>
           <img src="{{ asset('img/lo.png') }}" style="width: 13em" class="mt-2 d-flex justify-content-center" alt="">
         </a>
-
         <hr class="text-white">
-
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item mb-3">
                 <a href="{{ route('dashboard') }}"
@@ -116,12 +111,10 @@
                     aria-expanded="false">
                 <i class="fa-solid fa-user fa-2x"></i>
             </button>
-
             <ul class="dropdown-menu dropdown-menu-end">
                 <li class="dropdown-item">
                     <b>{{ auth()->user()->name }}</b>
                 </li>
-
                 <li>
                     <form action="{{ route('logout') }}" method="post">
                         @csrf

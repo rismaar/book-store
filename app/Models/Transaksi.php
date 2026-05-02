@@ -12,6 +12,7 @@ class Transaksi extends Model
     protected $table = 'transaksi';
     protected $primaryKey = 'id_transaksi';
     public $incrementing = false;
+    protected $keyType = 'string';
     protected $fillable = ['tanggal', 'grand_total', 'metode_pembayaran'];
     protected static function boot(){
         parent::boot();

@@ -67,7 +67,7 @@ class bukuController extends Controller
         return view('addProduct', compact('categories', 'supplier', 'book'));
     }
 
-    public function viewUpdate($isbn) : View
+    public function viewUpdate(string $isbn) : View
     {
         $books = Buku::findOrFail($isbn);
         $categories = Kategori::all();
@@ -76,7 +76,7 @@ class bukuController extends Controller
         return view('updateProduct', compact('books', 'categories', 'supplier', 'book'));
     }
 
-    public function update(Request $request, $isbn) : RedirectResponse
+    public function update(Request $request, string $isbn) : RedirectResponse
     {
         $request->validate([
             'isbn'          => 'required|unique:buku,isbn,' . $isbn . ',isbn',
@@ -111,7 +111,7 @@ class bukuController extends Controller
         return redirect()->route('products')->with('success', 'data successfully updated');
     }
 
-    public function destroy($isbn)
+    public function destroy(string $isbn)
     {
         $book = Buku::findOrFail($isbn);
         $book->delete();
@@ -120,31 +120,31 @@ class bukuController extends Controller
 
     public function animate()
     {
-        $books = Buku::where('categories', '1')->get();
+        $books = Buku::where('categories', '=', '1', 'and')->get();
         return view('animateFiction', compact('books'));
     }
 
     public function sejarah()
     {
-        $books = Buku::where('categories', '2')->get();
+        $books = Buku::where('categories', '=', '2', 'and')->get();
         return view('history', compact('books'));
     }
 
     public function mistery()
     {
-        $books = Buku::where('categories', '3')->get();
+        $books = Buku::where('categories', '=', '3', 'and')->get();
         return view('mistery', compact('books'));
     }
 
     public function fiksi()
     {
-        $books = Buku::where('categories', '4')->get();
+        $books = Buku::where('categories', '=', '4', 'and')->get();
         return view('fiksiFantasi', compact('books'));
     }
 
     public function novels()
     {
-        $books = Buku::where('categories', '5')->get();
+        $books = Buku::where('categories', '=', '5', 'and')->get();
         return view('novel', compact('books'));
     }
 

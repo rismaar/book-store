@@ -13,10 +13,10 @@ class dashboardController extends Controller
     {
         $kategoriData = DB::table('buku')->join('kategori', 'buku.categories', '=', 'kategori.id_kategori')
                         ->select('kategori.nama_kategori as kategori', DB::raw('COUNT(buku.isbn) as total'))->groupBy('kategori.nama_kategori')->get();
-        $recentTransaction = Transaksi::latest()->take(5)->get();
+        $recentTransaction = Transaksi::latest('id_transaksi')->take(5)->get();
         $start = $request->start_date;
         $end = $request->end_date;
-        $totalProduk = Buku::count();
+        $totalProduk = Buku::count('isbn');
         $query = Transaksi::with('details.buku');
         if($start && $end){
             $query->whereBetween('tanggal', [$start, $end]);
@@ -31,9 +31,7 @@ class dashboardController extends Controller
         if(!$keyword){
             return redirect()->back();
         }
-        $books = Buku::where(function($q) use($keyword){
-            $q->whereRaw('LOWER(title) LIKE ?', ["%{$keyword}%"])->orWhere('isbn', 'like', '%{$keyword}%');
-        })->get();
+        $books = Buku::with('supplier')->where('title', 'like', "%{$keyword}%")->orWhere('isbn', 'like', "%{$keyword}%")->get();
         return view('searchResults', compact('books', 'keyword'));
     }
 }

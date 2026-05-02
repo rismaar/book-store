@@ -107,7 +107,7 @@
                                 </button>
 
                                 <ul class="dropdown-menu dropdown-menu-end" @if ($res->status == 'accepted' or $res->status == 'rejected') d-none @endif>
-                                    <li class="dropdown-header">Ubah Status</li>
+                                    <li class="dropdown-header">Change Status</li>
                                     <li><hr class="dropdown-divider"></li>
 
                                     @foreach (['confirmed','approved','accepted','rejected'] as $status)

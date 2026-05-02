@@ -100,8 +100,8 @@
                         </div>
                     </td>
                     <td>
-                        <a href="{{ route('invoiceReq', $res->id_restock) }}"class="btn "><i class="fa-solid fa-file-lines fa-xl"  style="color: #3B38A0;"></i></a>
-                        <a href="{{ route('restock.email', $res->id_restock) }}" target="_blank" class="btn" ><i class="fa-solid fa-paper-plane fa-xl"  style="color: #3B38A0"></i></a>
+                        <a href="{{ route('invoiceReq', $res->id_restock) }}"class="btn "><i class="fa-solid fa-file-lines fa-xl"  style="color: #000000;"></i></a>
+                        <a href="{{ route('restock.email', $res->id_restock) }}" target="_blank" class="btn" ><i class="fa-solid fa-paper-plane fa-xl"  style="color: #000000"></i></a>
                     </td>
                 </tr>
             @endforeach

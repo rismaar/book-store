@@ -15,6 +15,7 @@
         {{ session('success') }}
     </div>
 @endif
+<h5>Approved Restocks</h5>
 <div class="container-fluid rounded-3 shadow-lg p-3 mt-3">
     <table id="myTable" class="table table-bordered table-sm w-auto mb-0">
         <thead align="center">

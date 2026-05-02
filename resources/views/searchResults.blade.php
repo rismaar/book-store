@@ -1,17 +1,21 @@
 @extends('layouts.app')
 @section('content')
 
-@if ($books->isEmpty())
-    <div class="alert alert-warning p-5">
-        <b>Sorry.. Product Not Found!</b>
-    </div>
-@else
-
 <style>
     .btn-close{
         filter: invert(1);
     }
 </style>
+@if ($books->isEmpty())
+    <h5>You find: <b>{{$keyword}}</b></h5>
+    <div class="alert alert-warning p-5">
+        <b>Sorry.. Product Not Found!</b>
+    </div>
+@else
+<div class="container-fluid text-primary p-3 bg-primary-subtle mb-5 mt-3 rounded-3">
+    <h5>You looking for: <b>{{$keyword}}</b></h5>
+</div>
+
     <div class="d-flex flex-wrap gap-5 justify-content-center">
         @foreach ($books as $book)
             <div class="mr-3">
@@ -55,7 +59,7 @@
                                     <h4 class="fw-bold">Rp {{ number_format($book->selling_price, 0, ',', '.') }}</h4>
                                     <p>Author by {{ $book->author }}</p>
                                     <p><b>Format: </b>Soft Cover ver</p>
-                                    <p>Publisher: {{ $book->supplier->nama_perusahaan }}</p>
+                                    <p>Publisher: {{ optional($book->supplier)->nama_perusahaan?? '-' }}</p>
                                     <p>Stock: {{ $book->stock }}</p>    
                                 </div>
                             </div>

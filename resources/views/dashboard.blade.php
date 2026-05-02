@@ -18,6 +18,9 @@
         background-color: #f2f2f2;
         text-align: left;
     }
+    .btn-close{
+        filter: invert(1);
+    }
 </style>
 @guest
     @if (session('error'))
@@ -25,9 +28,8 @@
             {{ session('error') }}
         </div>
     @endif
-    <h1 style="font-family:; font-size: 80px; font-weight:900; "
-        class="title-text-center d-flex justify-content-center mt-5">TOP CATEGORIES
-    </h1>
+    <h3 style="font-variant: small-caps; font-size: 70px; font-weight:800; color: #F8DE22;"
+        class="title-text-center d-flex justify-content-center mt-3">Top Categories</h3>
     <div class="container-fluid px-0 py-5 w-100">
         <div class="row g-4">
             <div class="col-12 col-lg-3">
@@ -71,71 +73,77 @@
     <div class="container-fluid rounded-5 p-5" style="background-color: #3b38a0">
         <p class="text-white">Our Books Recomendation</p>
         <div class="d-flex flex-wrap justify-content-center gap-5 py-5">
-            <div class="text-center">
-                <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 69.000">
-                    <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
-                        <img src="{{ asset('img/animal_farm.jpg') }}" style="height: 13rem; width: 10rem; " alt="" srcset="">
+            <div class="card bg-light border-0 p-0" style="width: 420px;">
+                <div class="row g-0">
+                    <div class="col-md-4 p-2">
+                        <img src="{{ asset('img/animal_farm.jpg') }}" class="img-fluid" style="height: 13rem; width: 19rem"  alt="...">
                     </div>
-                </button>
-                <font color="white">
-                    <div class="mt-3">
-                        <h5 class="mb-1">Animal Farm</h5>
-                        <p>George Orwell</p>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Animal Farm</h5>
+                            <p class="card-text">The danger of greedy leaders and the people’s blind obedience, which leads to the loss of freedom</p>
+                            <p class="card-text"><small class="text-body-secondary">By George Orwell</small></p>
+                        </div>
                     </div>
-                </font>
+                </div>
             </div>
-            <div class="text-center">
-                <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 150.000">
-                    <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
-                        <img src="{{ asset('img/catatan_pulau_buru.jpg') }}" style="height: 13rem; width: 10rem; " alt="" srcset="">
+            
+            <div class="card bg-light border-0 p-0" style="width: 410px;">
+                <div class="row g-0">
+                    <div class="col-md-4 p-2">
+                        <img src="{{ asset('img/catatan_pulau_buru.jpg') }}" class="img-fluid " style="height: 13rem; width: 15rem"  alt="...">
                     </div>
-                </button>
-                <font color="white">
-                    <div class="mt-3">
-                        <h5 class="mb-1">Perawan Remaja dalam</h5>
-                            <h5>Cengkraman Militer</h5>
-                        <p>Pramoedya Ananta Toer</p>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Perawan Remaja dalam Cengkeraman Militer</h5>
+                            <p class="card-text">The plight of Indonesian teenage girls who were forced into sexual slavery by the Japanese military during World War II</p>
+                            <p class="card-text"><small class="text-body-secondary">By Pramoedya Ananta Toer</small></p>
+                        </div>
                     </div>
-                </font>
+                </div>
             </div>
-            <div class="text-center ">
-                <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 135.000">
-                    <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
-                        <img src="{{ asset('img/laut_bercerita.jpg') }}" style="height: 13rem; width: 10rem; " alt="" srcset="">
+
+            <div class="card bg-light border-0 p-0" style="width: 410px;">
+                <div class="row g-0">
+                    <div class="col-md-4 p-2">
+                        <img src="{{ asset('img/laut_bercerita.jpg') }}" class="img-fluid " style="height: 13rem; width: 15rem"  alt="...">
                     </div>
-                </button>
-                <font color="white">
-                    <div class="mt-3">
-                        <h5 class="mb-1">Laut Bercerita</h5>
-                        <p>Leila S. Chudori</p>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Laut Bercerita</h5>
+                            <p class="card-text">A poignant tale of struggle, friendship, and betrayal among student activists during the New Orde era</p>
+                            <p class="card-text"><small class="text-body-secondary">By Leila S. Chudori</small></p>
+                        </div>
                     </div>
-                </font>
+                </div>
             </div>
-            <div class="text-center ">
-                <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 120.000">
-                    <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
-                        <img src="{{ asset('img/ronggeng_dukuh.jpg') }}" style="height: 13rem; width: 10rem; " alt="" srcset="">
+            <div class="card bg-light border-0 p-0" style="width: 410px;">
+                <div class="row g-0">
+                    <div class="col-md-4 p-2">
+                        <img src="{{ asset('img/london_murders.jpg') }}" class="img-fluid" style="height: 13rem; width: 15rem"  alt="...">
                     </div>
-                </button>
-                <font color="white">
-                    <div class="mt-3">
-                        <h5 class="mb-1">Ronggeng Dukuh</h5>
-                        <p>Ahmad Tohari</p>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">1888, London Murders in the Yeaar of the Ripper</h5>
+                            <p class="card-text">Documenting 50 other murder cases that occurred in London in 1888,</p>
+                            <p class="card-text"><small class="text-body-secondary">By Peter Stubley</small></p>
+                        </div>
                     </div>
-                </font>
+                </div>
             </div>
-            <div class="text-center ">
-                <button class="btn" type="button" data-bs-toggle="popover" data-bs-title="Price" data-bs-content="IDR. 300.000">
-                    <div class="bg-warning-subtle p-5 arc-frame" style="border-radius: 100px 100px 12px 12px;">
-                        <img src="{{ asset('img/madilog.jpg') }}" style="height: 13rem; width: 10rem; " alt="" srcset="">
+            <div class="card bg-light border-0 p-0" style="width: 410px;">
+                <div class="row g-0">
+                    <div class="col-md-4 p-2">
+                        <img src="{{ asset('img/sillyGilly.jpg') }}" class="img-fluid " style="height: 13rem; width: 15rem"  alt="...">
                     </div>
-                </button>
-                <font color="white">
-                    <div class="mt-3">
-                        <h5 class="mb-1">Madilog</h5>
-                        <p>Tan Malaka</p>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Silly Gilly</h5>
+                            <p class="card-text">Tells the story of the daily life, thoughts, and silly feelings of an introverted girl named Gilly</p>
+                            <p class="card-text"><small class="text-body-secondary">By Naela Ali</small></p>
+                        </div>
                     </div>
-                </font>
+                </div>
             </div>
         </div>
     </div>
@@ -268,16 +276,16 @@
                 </div>
                 <div class="col d-flex flex-column" style="height: 300px;">
                     <a class="text-decoration-none flex-fill mb-3" href="{{ route('menu') }}">
-                        <div class="card text-light h-100 p-3" style="background-color: #3B38A0; border: none;">
+                        <div class="card bg-primary-subtle h-100 p-3" style="color: #3B38A0; border: none;">
                             <div class="card-body d-flex align-items-center">
-                                <h3 class="card-title"><b>Restock</b></h3>
+                                <h2 class="card-title"><b>Restock</b></h2>
                             </div>
                         </div>
                     </a>
                     <a href="{{ route('view.supp') }}" class="text-decoration-none flex-fill ">
-                        <div class="card text-white h-100 p-3 bg-warning" style=" border: none;">
+                        <div class="card h-100 p-3 bg-warning-subtle" style="color:#ffb300; border: none;">
                             <div class="card-body d-flex align-items-center">
-                                <h3 class="card-title"><b>Supplier</b></h3>
+                                <h2 class="card-title"><b>Supplier</b></h2>
                             </div>
                         </div>
                     </a>

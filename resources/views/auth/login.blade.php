@@ -12,34 +12,39 @@
 </head>
 <style>
     ::placeholder{
-        color: #ffffff4b !important;
+        color: #00000056 !important;
         opacity: 1 !important;
         font-weight: 500;
     }
-    .btn-log:hover{
-        color: #ffde42 !important;
-        background-color: #3B38A0 !important;
-        cursor: pointer;
-        box-shadow: 0 8px 8px rgba(255, 255, 255, 0.2);
+    .input:focus{
+        box-shadow: 0 0 0 0.25rem #3B38A0 !important;
     }
 </style>
-<body class="bg-light justify-content-center d-flex align-items-center vh-100">
-    <div class="container rounded-5 d-flex flex-column align-items-center w-25 mx-auto p-5  shadow-lg bg-opacity-25" style="background-color: #3B38A0">
-        <img src="{{ asset('img/lo.png') }}" style="width: 15em" alt="">
-            <form></form>
-            <form action="{{ route('login.process') }}" method="POST" class="mb-5 mt-5 w-100 h-auto">
+<body class="bg-light d-flex align-items-center p-5 vh-100">
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row bg-light shadow-lg rounded-5 w-100 overflow-hidden" style="width: 900px">
+        <div class="col-md-6 d-flex align-items-center justify-content-center" style="background-color: #3B38A0">
+            <img src="{{ asset('img/vect.png') }}" class="img-fluid mb-4 p-5" style="max-width: 85%;" alt="">
+        </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center p-5">
+            <h1 class="fw-bold mb-5">Let's Go to Work!</h1>
+            <form action="{{ route('login.process') }}" method="POST" class="w-75">
                 @csrf
                 @error('username')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
-                <div class="mb-3 ">
-                    <input type="text" class="form-control-lg form-control rounded-5 p-4 border-0" id="username" name="username" placeholder="Username" style="background-color: #ffffff42" required>
+                <div class="mb-3">
+                    <input type="text" class="form-control form-control-lg rounded-4 p-3 border-0 bg-secondary-subtle" name="username" placeholder="Username" required>
                 </div>
                 <div class="mb-3">
-                    <input type="password" class="form-control-lg form-control rounded-5 p-4 border-0" id="password" name="password" placeholder="Password" style="background-color: #ffffff42;" required>
+                    <input type="password" class="form-control form-control-lg rounded-4 p-3 border-0 bg-secondary-subtle" name="password" placeholder="Password" required>
                 </div>
-                <button type="submit" class="btn btn-log mb-3 mt-3 p-3 w-100 rounded-5 fw-bold" style="background-color: #ffde42; color: #3B38A0; font-size: 1rem;"><b>Login</b></button>
+                <hr class="mt-4 mb-4">
+                <button type="submit" class="btn w-100 text-white rounded-4 fw-bold p-3"
+                    style="background-color: #3B38A0;">Login</button>
             </form>
+        </div>
     </div>
+</div>
 </body>
 </html>

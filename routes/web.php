@@ -11,7 +11,6 @@ use App\Http\Controllers\kategoriController;
 use App\Http\Controllers\restockController;
 use App\Http\Controllers\supplierController;
 use App\Http\Controllers\transactionController;
-use App\Models\Buku;
 
 Route::post('/logout', [loginController::class, 'logout'])->name('logout');
 Route::get('/login', [loginController::class, 'ShowLoginForm'])->name('login');
@@ -71,9 +70,8 @@ Route::middleware(['auth'])->group(function (){
     Route::post('/accepted/{restock}', [restockController::class, 'accepted'])->name('accepted');
     Route::get('/restock/{id}/email', [restockController::class, 'sendGmail'])->name('restock.email');
 
-    Route::get('/buku/price/{isbn}', function($isbn){
-        return \App\Models\Buku::where('isbn', $isbn)->select('price')->firstOrFail();
+    Route::get('/buku/price/{isbn}', function(string $isbn){
+        $buku = \App\Models\Buku::findOrFail($isbn);
+        return response()->json(['price' => $buku->price]);     
     });
 });
-
-?>

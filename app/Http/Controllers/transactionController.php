@@ -14,8 +14,8 @@ class transactionController extends Controller
 {
     public function addTrans()
     {
-        $idTransaksi = Transaksi::boot();
-        return view('addTransaction', compact('idTransaksi'));
+        $Transaksi = Transaksi::boot();
+        return view('addTransaction', compact('Transaksi'));
     }
 
     public function viewTrans(Request $request)
@@ -82,7 +82,15 @@ class transactionController extends Controller
     {
         $transaksi = Transaksi::with('details.buku')->findOrFail($id);
         $itemCount = $transaksi->details->count();
-        $paperHeight = 120 + ($itemCount * 22) + 100;
+        $totalHeight = 300;
+        foreach($transaksi->details as $d){
+            $title = $d->buku->title ?? '';
+            $charsPerLine = 28;
+            $lines = ceil(strlen($title) / $charsPerLine);
+            $rowHeight = 20 + ($lines * 10);
+            $totalHeight += $rowHeight;
+        }
+        $paperHeight = $totalHeight;
         $html = '
         <style>
             body {
@@ -158,7 +166,6 @@ class transactionController extends Controller
         ';
 
         $pdf = Pdf::loadHTML($html)->setPaper([0, 0, 226.77, $paperHeight], 'portrait'); 
-
         return $pdf->stream('struk_'.$transaksi->id_transaksi.'.pdf');
     }
 
@@ -166,7 +173,7 @@ class transactionController extends Controller
     {
         $start = $request->start_date;
         $end = $request->end_date;
-        $transact = Transaksi::whereBetween('created_at', [$start.' 00:00:00', $end.' 23:59:59'])->get();
+        $transact = Transaksi::with('details.buku')->whereBetween('created_at', [$start.' 00:00:00', $end.' 23:59:59'])->get();
         $total = $transact->sum('grand_total');
         return view('report', compact('start', 'end', 'transact', 'total'));
     }
